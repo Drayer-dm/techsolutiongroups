@@ -4,4 +4,4 @@
     'rel' => 'icon',
 ])
 
-<link rel="{{ $rel }}" type=" {{ $type }}" href=" $href">
+<link rel="icon" type="image/png" href="http://localhost:8000/images/favicon.png?v=2">
