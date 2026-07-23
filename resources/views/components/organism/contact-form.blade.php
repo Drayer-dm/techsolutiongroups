@@ -23,6 +23,22 @@
             />
         </div>
 
+
+        <div class="grid gird-cols-1 sm:grid-cols-2 gap-5">
+            <x-molecules.form.select-field
+            name="asunto"
+            label="Asunto"
+            :options="[
+                'consultas' => 'Consultas',
+                'felicitaciones' => 'Felicitaciones',
+                'reclamos' => 'Reclamos',
+                'otro' => 'Otro',
+                ]"
+            placeholder="Seleccione Asunto"
+            required
+            />
+        </div>
+
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <x-molecules.form.field
             name="telefono"
@@ -42,6 +58,10 @@
         <div clas="flex justify-end pt-2">
             <x-atoms.form.button>
                 Enviar
+            </x-atoms.form.button>
+
+            <x-atoms.form.button type="reset" variant="secondary">
+                Limpiar
             </x-atoms.form.button>
         </div>
 
