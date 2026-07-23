@@ -30,26 +30,30 @@
 
         {{-- card 1 --}}
         <div class="border rounded-lg p-6 shadow-sm">
+            <x-atoms.icon.camara class="w-10 h-10 mx-auto text-gray-700" />
             <h4 class="font-bold text-xl mb-2"></h4>
             <p>soy un servicio ~ camaras</p>
         </div>
 
         {{-- card 2 --}}
         <div class="border rounded-lg p-6 shadow-sm">
+            <x-atoms.icon.cable class="w-10 h-10 mx-auto text-gray-700" />
             <h4 class="font-bold text-xl mb-2"></h4>
-            <p>soy un servicio</p>
+            <p>soy un servicio ~ p.electrico</p>
         </div>
 
         {{-- card 3 --}}
         <div class="border rounded-lg p-6 shadow-sm">
+            <x-atoms.icon.tuerca class="w-10 h-10 mx-auto text-gray-700" />
             <h4 class="font-bold text-xl mb-2"></h4>
-            <p>soy un servicio</p>
+            <p>soy un servicio ~ p.cableado</p>
         </div>
 
         {{-- card 4 --}}
         <div class="border rounded-lg p-6 shadow-sm">
+            <x-atoms.icon.program class="w-10 h-10 mx-auto text-gray-700" />
             <h4 class="font-bold text-xl mb-2"></h4>
-            <p>soy un servicio</p>
+            <p>soy un servicio p.informatica</p>
         </div>
     </div>
 
