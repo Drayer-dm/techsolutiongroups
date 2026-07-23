@@ -18,5 +18,5 @@
         :required ="$required"
     />
 
-    <x-atoms.form.error :name="$name"/>
+    <x-atoms.form.error :name="$name" />
 </div>
