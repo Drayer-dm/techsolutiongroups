@@ -13,6 +13,6 @@
     'class' => "inline-flex items-center gap-1.5 px-4 py-2 rounded-md txt-sm font-semibold transition-colors {$styles}"
     ]) }}>
     {{$slot}}
-<a/>
+</a>
 
 <!-- Agregamos el php para crear una variante de los botones-->
