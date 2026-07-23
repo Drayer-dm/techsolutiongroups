@@ -1,4 +1,4 @@
-@props ([
+@props([
     'name' => '',
     'label' => '',
     'type' => 'text',
@@ -8,17 +8,17 @@
 ])
 
 <div {{ $attributes->merge(['class' => 'flex flex-col']) }}>
-    <x-atoms.form.label :for="$id" : required="$required">
+    <x-atoms.form.label :for="$id" :required="$required">
         {{ $label }}
     </x-atoms.form.label>
 
     <x-atoms.form.input 
         :id="$id"
-        :type ="$type"
-        :name ="$name"
+        :type="$type"
+        :name="$name"
         :placeholder="$placeholder"
         :required="$required"
     />
 
-    <x-atoms.form.error :name= "$name"/>
-</div> 
+    <x-atoms.form.error :name="$name" />
+</div>
