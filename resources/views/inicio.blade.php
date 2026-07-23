@@ -31,30 +31,58 @@
         {{-- card 1 --}}
         <div class="border rounded-lg p-6 shadow-sm">
             <x-atoms.icon.camara class="w-10 h-10 mx-auto text-gray-700" />
-            <h4 class="font-bold text-xl mb-2"></h4>
-            <p>soy un servicio ~ camaras</p>
+            <h4 class="font-bold text-xl mb-2">
+                Camaras de seguridad
+            </h4>
+            <p>
+                Ofrecemos instalacines de camaras de seguridad mediante
+                rigurosos estandares de la industria.
+            </p>
         </div>
 
         {{-- card 2 --}}
         <div class="border rounded-lg p-6 shadow-sm">
             <x-atoms.icon.cable class="w-10 h-10 mx-auto text-gray-700" />
-            <h4 class="font-bold text-xl mb-2"></h4>
-            <p>soy un servicio ~ p.electrico</p>
+            <h4 class="font-bold text-xl mb-2">Cableados Corporativos</h4>
+            <p>
+                Contamos con servicios de instalacion de cableado con fines de uso
+                corporativo
+            </p>
         </div>
 
         {{-- card 3 --}}
         <div class="border rounded-lg p-6 shadow-sm">
             <x-atoms.icon.tuerca class="w-10 h-10 mx-auto text-gray-700" />
-            <h4 class="font-bold text-xl mb-2"></h4>
-            <p>soy un servicio ~ p.cableado</p>
+            <h4 class="font-bold text-xl mb-2">Cableado Industrial</h4>
+            <p>
+                Contamos con cableado industrial, enfocado en el sector
+                IT para manejo de servidores
+            </p>
         </div>
 
         {{-- card 4 --}}
         <div class="border rounded-lg p-6 shadow-sm">
             <x-atoms.icon.program class="w-10 h-10 mx-auto text-gray-700" />
-            <h4 class="font-bold text-xl mb-2"></h4>
-            <p>soy un servicio p.informatica</p>
+            <h4 class="font-bold text-xl mb-2">Servicios de IT</h4>
+            <p>
+                Ofrecemos servicios informaticos enfocados en area de programacion,
+                 manejo de servidores y mas.
+            </p>
         </div>
     </div>
-
+    {{-- ceo info --}}
+    <div class="mt-4 text-center w-full bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 py-12 px-6 rounded-2x1 shadow-lg">
+        <h3 class="font-bold text-xl mb-2 text-white">CEO - Juanito Pecados</h4>
+        <img src="{{ asset('images/the_ceo.jpg') }}" 
+        alt="the_ceo"
+        class="w-40 h-40 object-cover rounded-full mx-auto mb-4 border-4  border-cyan-400/60 shadow[0_0_20px_rgba(34,211,238,0.4)]">
+        <h4 class="text-cyan-300 font-medium">
+            Ingeniero en informatica con multiples menciones en el area IT, doctorado en ciencia de datos, 
+            ex-ingeniero aeroespacial con colaboraciones en la NASA
+        </h4>
+        <p class="text-slate-200 max-w-2x1 mx-auto mt-2">
+            Contamos con un equipo capacitado dentro del area de IT siempre entregando la mejor experiencia
+            a nuestros clientes mediante la ejecucion de proyectos de manera eficaz y eficiente.
+        </p>
+    </div>
 </x-layout>
