@@ -14,6 +14,9 @@
                 <li>
                     <a href="{{ url('/faq') }}" class="text-slate-300 hover:text-white">FAQ</a>
                 </li>
+                <li>
+                    <a href="{{ url('/contacto') }}" class="text-slate-300 hover:text-white">Contacto</a>
+                </li>
             </ul>
         </div>
 

@@ -15,7 +15,7 @@
 
     <div
         :class="open ? 'flex' : 'hidden'"
-        class="md:flex bg-white px-6 py-3 flex-col md:flex-row items-center justify-between border-t border-slate-100 gap-4 md:gap-0"
+        class="md:flex bg-white px-6 py-3 flex-col md:flex-row items-center justify-center border-t border-slate-100 gap-4 md:gap-8"
     >
         <x-atoms.nav.link href="{{ asset('servicios') }}" :active="request()->routeIs('servicios')">Servicios</x-atoms.nav.link>
         <x-atoms.nav.link href="{{ asset('productos') }}" :active="request()->routeIs('productos')">Productos</x-atoms.nav.link>
