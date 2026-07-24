@@ -7,8 +7,13 @@
     @vite(['resources/css/app.css'])
     <x-atoms.icon.icon/>
 </head>
-    <body class="bg-slate-100 text-slate-800 font-sans p-12 flex flex-col items-left min-h-screen">
+    <body class="bg-slate-100 text-slate-800 font-sans flex flex-col items-left min-h-screen">
           <x-organism.navbar/>
-          {{$slot ?? ''}}
+          
+            <div class="p-12 flex-1">
+                {{$slot ?? ''}}
+            </div>
+
+          <x-organism.footer/>
     </body>
 </html>

@@ -29,3 +29,11 @@ Route::get('/cobertura', function (){
 Route::get('/servicios', function (){
     return view('servicios');
 });
+
+Route::get('/', function (){
+    return view('inicio');
+});
+
+Route::get('/nosotros', function (){
+    return view('nosotros');
+});
