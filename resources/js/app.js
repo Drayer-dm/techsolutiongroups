@@ -101,6 +101,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (submitBtn) {
                 submitBtn.disabled = true;
                 submitBtn.textContent = "Validando...";
+                console.log("Nombre: ", name);
+                console.log("Telefono: ",phone);
+                console.log("Asunto: ",asunto);
+                console.log("Correo: ",email);
+                console.log("Mensaje",message);
             }
 
             setTimeout(() => {
