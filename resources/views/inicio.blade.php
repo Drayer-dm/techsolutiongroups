@@ -72,7 +72,7 @@
     </div>
     {{-- ceo info --}}
     <div class="mt-4 text-center w-full bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 py-12 px-6 rounded-2x1 shadow-lg">
-        <h3 class="font-bold text-xl mb-2 text-white">CEO - Juanito Pecados</h4>
+        <h3 class="font-bold text-xl mb-2 text-white">CEO - Juanito Pecados</h3>
         <img src="{{ asset('images/the_ceo.jpg') }}" 
         alt="the_ceo"
         class="w-40 h-40 object-cover rounded-full mx-auto mb-4 border-4  border-cyan-400/60 shadow[0_0_20px_rgba(34,211,238,0.4)]">
