@@ -1,7 +1,7 @@
-<div class="bg-white rounded-lg shadow-sm overflow-hidden">
-    <div class="px-4 py-5 border-b border-slate-100 sm:px-6">
-        <h2 class="text-lg font-semibold text-slate-900">Envianos un mensaje</h2>
-        <p class="text-sm text-slate-600 mt-1">Completa el formulario y te responderemos a la brevedad.</p>
+<div class="bg-white dark:bg-slate-900 rounded-lg shadow-sm overflow-hidden">
+    <div class="px-4 py-5 border-b border-slate-100 dark:border-slate-700 sm:px-6">
+        <h2 class="text-lg font-semibold text-slate-900 dark:text-white">Envíanos un mensaje</h2>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Completa el formulario y te responderemos a la brevedad.</p>
     </div>
 
     <form id="atomicContactForm" class="px-4 py-5 space-y-5 sm:px-6 sm:py-6" novalidate>
@@ -22,7 +22,7 @@
                 <x-molecules.form.field
                     id="correo"
                     name="email"
-                    label="Correo Electronico"
+                    label="Correo Electrónico"
                     type="email"
                     placeholder="juan@empresa.com"
                     required
@@ -69,7 +69,7 @@
                     id="mensaje"
                     name="mensaje"
                     label="Mensaje"
-                    placeholder="¿Tienes Algun Comentario?"
+                    placeholder="¿Tienes algún comentario?"
                     required
                 />
                 <p id="error-mensaje" class="error-message mt-1 text-sm text-red-600 hidden"></p>
