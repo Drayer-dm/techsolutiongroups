@@ -6,62 +6,71 @@ use Illuminate\Http\Request;
 
 class ServiceProjectController extends Controller
 {
-    /**
-     * Retorna la vista fusionada de Servicios y Proyectos con datos estáticos.
-     */
+
     public function index()
     {
+        // 1. Servicios
         $servicios = [
-            'Servicio informático Puerto Montt',
-            'Cámaras seguridad Puerto Montt',
-            'Cableado estructurado',
-            'Outsorcing informático',
-            'Sistema respaldo en línea',
-            'Hardware/Software (Reparación, Ventas, Presupuesto etc.)',
-            'Proyectos eléctricos',
-            'Diseño y Desarrollo web'
+            ['titulo' => 'Servicio informático', 'icono' => '💻'],
+            ['titulo' => 'Cámaras de seguridad', 'icono' => '📹'],
+            ['titulo' => 'Cableado estructurado', 'icono' => '🔌'],
+            ['titulo' => 'Outsorcing informático', 'icono' => '🤝'],
+            ['titulo' => 'Sistema respaldo en línea', 'icono' => '☁️'],
+            ['titulo' => 'Hardware / Software', 'icono' => '⚙️'],
+            ['titulo' => 'Proyectos eléctricos', 'icono' => '⚡'],
+            ['titulo' => 'Diseño y Desarrollo web', 'icono' => '🌐']
         ];
 
-        // 🔒 FIX: Se añade '/' al inicio de cada ruta de imagen para forzar la resolución desde el Document Root.
+        // 2. Proyectos
         $proyectos = [
             [
-                'titulo' => 'Proyecto Instalación Cámaras en Planta Proceso',
-                'descripcion' => 'Se realiza la toma de requerimiento por cliente, luego se procede a la instalación de cámaras según ubicación entregada por cliente considerando aspectos de respaldo en DVR, luego se configura aplicación para grabar localmente y finalmente se configura para acceder vía internet desde fuera de la planta.',
+                'titulo' => 'Instalación Cámaras en Planta Proceso',
+                'descripcion' => 'Levantamiento de requerimientos, instalación estratégica de cámaras, configuración de respaldo DVR y acceso remoto seguro.',
                 'galeria' => [
-                    ['imagen' => '/images/proyectosTechSolutions/camara/imagen-camara1.jpg', 'leyenda' => 'Instalación de cámara interna.'],
-                    ['imagen' => '/images/proyectosTechSolutions/camara/imagen-camara2.jpg', 'leyenda' => 'Conectores.'],
-                    ['imagen' => '/images/proyectosTechSolutions/camara/imagen-camara3.png', 'leyenda' => 'Instalación de cámara externa.']
+                    ['imagen' => '/images/proyectosTechSolutions/camara/imagen-camara1.jpg', 'leyenda' => 'Instalación interna.'],
+                    ['imagen' => '/images/proyectosTechSolutions/camara/imagen-camara2.jpg', 'leyenda' => 'Conexionado.'],
+                    ['imagen' => '/images/proyectosTechSolutions/camara/imagen-camara3.png', 'leyenda' => 'Instalación externa.']
                 ]
             ],
             [
-                'titulo' => 'Proyecto Cableado Estructurado',
-                'descripcion' => 'Se realiza Renovación de cableado estructurado en sucursal conexión a Patch Panel, Instalación de Rosetas y enchufe en Rack.<br><br>Se repite procedimiento en varias sucursales de la zona sur por renovación cableado, proyecto macro.',
+                'titulo' => 'Cableado Estructurado Corporativo',
+                'descripcion' => 'Renovación integral de cableado UTP, conexión a Patch Panel, instalación de rosetas y ordenamiento de Rack en múltiples sucursales.',
                 'galeria' => [
-                    ['imagen' => '/images/proyectosTechSolutions/cableado/imagen-cableado-1.jpg', 'leyenda' => 'Finalizado rotulado con cable UTP.'],
-                    ['imagen' => '/images/proyectosTechSolutions/cableado/imagen-cableado-2.jpg', 'leyenda' => 'Rack Rotulado puerta instalada.'],
-                    ['imagen' => '/images/proyectosTechSolutions/cableado/imagen-cableado-3.jpg', 'leyenda' => 'Colocacion PX y VX.']
+                    ['imagen' => '/images/proyectosTechSolutions/cableado/imagen-cableado-1.jpg', 'leyenda' => 'Cableado UTP.'],
+                    ['imagen' => '/images/proyectosTechSolutions/cableado/imagen-cableado-2.jpg', 'leyenda' => 'Rack organizado.'],
+                    ['imagen' => '/images/proyectosTechSolutions/cableado/imagen-cableado-3.jpg', 'leyenda' => 'Puntos de red.']
                 ]
             ],
             [
-                'titulo' => 'Servicio Outsorcing',
-                'descripcion' => 'Se realiza asistencia en terreno ante las incidencias generadas por cliente. Esta asistencia se presta sólo en caso de que soporte remoto no lo pueda solventar.',
+                'titulo' => 'Servicio de Outsourcing IT',
+                'descripcion' => 'Asistencia técnica en terreno para resolución de incidencias críticas que superan el alcance del soporte remoto estándar.',
                 'galeria' => [
-                    ['imagen' => '/images/proyectosTechSolutions/outsorcing/imagen-outsorcing-1.jpg', 'leyenda' => 'Camaras IP/CCTV'],
-                    ['imagen' => '/images/proyectosTechSolutions/outsorcing/imagen-outsorcing-2.jpg', 'leyenda' => 'Cableado Estructurado'],
-                    ['imagen' => '/images/proyectosTechSolutions/outsorcing/imagen-outsorcing-3.jpg', 'leyenda' => 'Mantenimiento de Infraestructura']
+                    ['imagen' => '/images/proyectosTechSolutions/outsorcing/imagen-outsorcing-1.jpg', 'leyenda' => 'CCTV Avanzado.'],
+                    ['imagen' => '/images/proyectosTechSolutions/outsorcing/imagen-outsorcing-2.jpg', 'leyenda' => 'Tableros de control.'],
+                    ['imagen' => '/images/proyectosTechSolutions/outsorcing/imagen-outsorcing-3.jpg', 'leyenda' => 'Mantenimiento hardware.']
                 ]
             ],
             [
                 'titulo' => 'Diseño y Desarrollo Web',
-                'descripcion' => '- Diseño y desarrollo Web a medida.<br>- Rediseño y optimización de su sitio Web actual.<br>- Landing pages y micrositios.<br>- Blogs y sitios comerciales.<br>- Diseños sobre Content Managements Systems (WordPress, Drupal, Joomla, etc.)',
+                'descripcion' => 'Creación de sitios web a medida, optimización, landing pages y sistemas CMS adaptados a la necesidad comercial del cliente.',
                 'galeria' => [
-                    ['imagen' => '/images/proyectosTechSolutions/desarrollo/sachoedicionespage.jpg', 'leyenda' => 'Sachoediciones.cl', 'link' => '#'],
-                    ['imagen' => '/images/proyectosTechSolutions/desarrollo/visionampliapage.jpg', 'leyenda' => 'Visionamplia.cl', 'link' => '#'],
-                    ['imagen' => '/images/proyectosTechSolutions/desarrollo/mantec-mtpage.jpg', 'leyenda' => 'Mantec-mt.cl', 'link' => '#']
+                    ['imagen' => '/images/proyectosTechSolutions/desarrollo/sachoedicionespage.jpg', 'leyenda' => 'Sacho Ediciones', 'link' => '#'],
+                    ['imagen' => '/images/proyectosTechSolutions/desarrollo/visionampliapage.jpg', 'leyenda' => 'Visión Amplia', 'link' => '#'],
+                    ['imagen' => '/images/proyectosTechSolutions/desarrollo/mantec-mtpage.jpg', 'leyenda' => 'Mantec MT', 'link' => '#']
                 ]
             ]
         ];
 
-        return view('servicios-proyectos', compact('servicios', 'proyectos'));
+        // 3. Clientes 
+        $clientes = [
+            ['nombre' => 'Banco Estado', 'logo' => '/images/proyectosTechSolutions/clientes/banco-estado.jpg'],
+            ['nombre' => 'Entel', 'logo' => '/images/proyectosTechSolutions/clientes/entel-logo.png'],
+            ['nombre' => 'Geositel', 'logo' => '/images/proyectosTechSolutions/clientes/geositel-logo.gif'],
+            ['nombre' => 'HP', 'logo' => '/images/proyectosTechSolutions/clientes/hp-logo.webp'],
+            ['nombre' => 'Lenovo', 'logo' => '/images/proyectosTechSolutions/clientes/lenovo-logo.webp'],
+            ['nombre' => 'Servipag', 'logo' => '/images/proyectosTechSolutions/clientes/servipag-logo.png'],
+        ];
+
+        return view('servicios-proyectos', compact('servicios', 'proyectos', 'clientes'));
     }
 }

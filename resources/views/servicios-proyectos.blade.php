@@ -1,60 +1,63 @@
 <x-layout>
-    <x-slot name="title">Servicios y Proyectos - Techsolution</x-slot>
+    <x-slot name="title">Soluciones Tecnológicas - Techsolution</x-slot>
 
-    <!-- Header / Breadcrumb integrado al tema oscuro -->
-    <div class="w-full border-b border-slate-800 bg-slate-900/40">
-        <div class="container mx-auto max-w-6xl px-4 py-4 flex justify-center lg:justify-start">
-            <p class="text-[11px] text-slate-500 font-bold tracking-widest uppercase">
-                <a href="/" class="hover:text-cyan-400 transition-colors">Home</a> 
-                <span class="mx-2 text-slate-700">&gt;</span> 
-                <span class="text-cyan-400">Servicios y Proyectos</span>
+
+    <div class="w-full bg-slate-900 border-b border-slate-800 pt-10 pb-16">
+        <div class="container mx-auto max-w-7xl px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">Soluciones <span class="text-cyan-400">Tecnológicas</span></h1>
+            <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+                Integramos servicios, desarrollamos proyectos y respaldamos la continuidad operativa de tu empresa.
             </p>
         </div>
     </div>
 
-    <!-- Contenido Principal -->
-    <main class="container mx-auto max-w-6xl px-4 py-12 flex flex-col lg:flex-row gap-12">
+    <main class="w-full bg-[#0B1120] pb-24">
         
-        {{-- Columna Principal (75%) --}}
-        <section class="lg:w-3/4">
-            
-            {{-- SECCIÓN SERVICIOS --}}
-            <header class="mb-8 border-b border-slate-800 pb-6">
-                <h1 class="text-3xl text-white font-bold tracking-wide mb-4">Nuestros Servicios</h1>
-                <p class="text-sm text-slate-400 leading-relaxed">
-                    Actualmente, nuestra oferta de servicios se orienta hacia el logro de soluciones integrales, prácticas, flexibles y eficientes. Según lo anterior, los servicios son agrupados en las categorías de:
-                </p>
-            </header>
 
-            <ul class="list-none space-y-3 mb-8 ml-2">
-                @foreach($servicios as $servicio)
-                    <li class="flex items-start text-sm text-slate-300">
-                        <span class="text-cyan-500 mr-3 mt-0.5 text-[10px]">■</span>
-                        {{ $servicio }}
-                    </li>
-                @endforeach
-            </ul>
-
-            <p class="text-sm text-slate-400 leading-relaxed mb-16">
-                También podemos ajustarnos a cualquier proyecto tecnológico que esté dentro de nuestro alcance.
-            </p>
-
-            {{-- SECCIÓN PROYECTOS --}}
-            <header class="mb-8 border-t border-slate-800 pt-10">
-                <h2 class="text-2xl text-white font-bold tracking-wide mb-2">Proyectos Destacados</h2>
-                <p class="text-sm text-slate-400 leading-relaxed">
-                    A continuación, un portafolio de nuestros trabajos más recientes.
-                </p>
-            </header>
-
-            <div class="w-full space-y-2">
-                @forelse($proyectos as $proyecto)
-                    <x-organism.project-list-item :proyecto="$proyecto" />
-                @empty
-                    <p class="text-slate-500 py-8">No hay proyectos disponibles en este momento.</p>
-                @endforelse
+        <section class="container mx-auto max-w-7xl px-4 py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl text-white font-semibold">Nuestros Servicios</h2>
+                <div class="h-1 w-20 bg-cyan-500 mx-auto mt-4 rounded-full"></div>
             </div>
 
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                @foreach($servicios as $servicio)
+                    <div class="bg-slate-800/30 border border-slate-700/50 p-6 rounded-2xl hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(6,182,212,0.1)] transition-all duration-300">
+                        <div class="text-3xl mb-4">{{ $servicio['icono'] }}</div>
+                        <h3 class="text-slate-200 font-medium text-base">{{ $servicio['titulo'] }}</h3>
+                    </div>
+                @endforeach
+            </div>
+        </section>
+
+        <section class="container mx-auto max-w-7xl px-4 py-16 border-t border-slate-800/60">
+            <div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <h2 class="text-3xl text-white font-semibold">Proyectos Destacados</h2>
+                    <div class="h-1 w-20 bg-cyan-500 mt-4 rounded-full"></div>
+                </div>
+                <p class="text-slate-400 text-sm max-w-md">Casos de éxito y despliegues técnicos ejecutados bajo los más altos estándares de calidad de la industria.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                @foreach($proyectos as $proyecto)
+                    <x-organism.project-card :proyecto="$proyecto" />
+                @endforeach
+            </div>
+        </section>
+
+     
+        <section class="container mx-auto max-w-7xl px-4 py-16 border-t border-slate-800/60">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl text-white font-semibold">Clientes que confían en nosotros</h2>
+                <div class="h-1 w-20 bg-cyan-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                @foreach($clientes as $cliente)
+                    <x-molecules.others.client-logo :logo="$cliente['logo']" :nombre="$cliente['nombre']" />
+                @endforeach
+            </div>
         </section>
 
     </main>
