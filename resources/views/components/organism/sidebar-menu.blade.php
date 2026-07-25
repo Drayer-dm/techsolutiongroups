@@ -16,9 +16,6 @@
                         <a href="#" class="flex items-center gap-2"><span class="text-gray-300 text-xs">»</span> Clientes</a>
                     </li>
                     <li class="border-b border-gray-100 py-1.5 hover:text-yellow-500 transition-colors">
-                        <a href="{{ route('proyectos.index') }}" class="flex items-center gap-2"><span class="text-gray-300 text-xs">»</span> Proyectos</a>
-                    </li>
-                    <li class="border-b border-gray-100 py-1.5 hover:text-yellow-500 transition-colors">
                         <a href="/faq" class="flex items-center gap-2"><span class="text-gray-300 text-xs">»</span> Preguntas Frecuentes</a>
                     </li>
                 </ul>

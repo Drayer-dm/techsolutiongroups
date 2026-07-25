@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ServiceProjectController;
 
 Route::get('/', function () {
     return view('inicio');
@@ -33,6 +34,4 @@ Route::get('/cobertura', function (){
     return view('cobertura');
 });
 
-Route::get('/servicios-proyectos', function (){
-    return view('servicios-proyectos');
-})->name('servicios-proyectos.index');
+Route::get('/servicios-proyectos', [ServiceProjectController::class, 'index'])->name('servicios-proyectos.index');

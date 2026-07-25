@@ -1,21 +1,26 @@
-{{-- Template: Servicios --}}
+{{-- 
+    Template: Servicios y Proyectos
+    Combina ambas vistas integrando la lista de servicios arriba y el loop de proyectos debajo.
+--}}
 <x-layout>
-    <x-slot name="title">Servicios - Techsolution</x-slot>
+    <x-slot name="title">Servicios y Proyectos - Techsolution</x-slot>
 
     <!-- Indicador de Ruta (Breadcrumb) -->
     <div class="w-full flex justify-center py-6 border-b border-gray-100 mb-8">
         <p class="text-[11px] text-gray-400 font-bold tracking-widest uppercase">
             <a href="/" class="hover:text-yellow-500 transition-colors">Home</a> 
             <span class="mx-2 text-gray-300">></span> 
-            <span class="text-yellow-500">Servicios</span>
+            <span class="text-yellow-500">Servicios y Proyectos</span>
         </p>
     </div>
 
     <!-- Contenido Principal -->
-    <main class="container mx-auto max-w-5xl px-4 pb-20 flex flex-col lg:flex-row gap-12">
+    <main class="container mx-auto max-w-6xl px-4 pb-20 flex flex-col lg:flex-row gap-12">
         
-        {{-- Columna Izquierda: Detalle de Servicios (75%) --}}
+        {{-- Columna Izquierda: Servicios y Proyectos (75%) --}}
         <section class="lg:w-3/4">
+            
+            {{-- BLOQUE 1: SERVICIOS --}}
             <header class="mb-6">
                 <h1 class="text-2xl text-gray-600 font-serif uppercase tracking-wide mb-6">Servicios</h1>
                 <p class="text-sm text-gray-500 leading-relaxed mb-4">
@@ -23,16 +28,31 @@
                 </p>
             </header>
 
-            {{-- Lista de Servicios con Viñetas --}}
             <ul class="list-disc list-inside text-sm text-gray-500 space-y-2 pl-4 mb-6 marker:text-gray-400">
                 @foreach($servicios as $servicio)
                     <li>{{ $servicio }}</li>
                 @endforeach
             </ul>
 
-            <p class="text-sm text-gray-500 leading-relaxed">
+            <p class="text-sm text-gray-500 leading-relaxed mb-16">
                 También podemos ajustarnos a cualquier proyecto tecnológico que este dentro de nuestro alcance.
             </p>
+
+            {{-- BLOQUE 2: PROYECTOS --}}
+            <header class="mb-8 border-t border-gray-200 pt-10">
+                <h2 class="text-2xl text-gray-600 font-serif uppercase tracking-wide mb-2">Proyectos</h2>
+                <p class="text-sm text-gray-500 leading-relaxed">
+                    A continuación, un portafolio de nuestros trabajos más recientes.
+                </p>
+            </header>
+
+            <div class="w-full space-y-6">
+                @foreach($proyectos as $proyecto)
+                    {{-- 🔒 REUTILIZACIÓN: Usamos el componente Organism que creamos anteriormente --}}
+                    <x-organism.project-list-item :proyecto="$proyecto" />
+                @endforeach
+            </div>
+
         </section>
 
         {{-- Columna Derecha: Sidebar (25%) --}}
@@ -41,30 +61,4 @@
         </aside>
 
     </main>
-    {{-- Template: Proyectos --}}
-<x-layout>
-    <x-slot name="title">Proyectos - Techsolution</x-slot>
-
-    <!-- Indicador de Ruta (Breadcrumb) -->
-    <div class="w-full flex justify-center py-6 border-b border-gray-100 mb-8">
-        <p class="text-[11px] text-gray-400 font-bold tracking-widest uppercase">
-            <a href="/" class="hover:text-yellow-500 transition-colors">Home</a> 
-            <span class="mx-2 text-gray-300">></span> 
-            <span class="text-yellow-500">Proyectos</span>
-        </p>
-    </div>
-
-    <!-- Contenido Principal -->
-    <main class="container mx-auto max-w-5xl px-4 pb-16">
-        <header class="mb-4">
-            <h1 class="text-2xl text-gray-600 font-serif uppercase tracking-wide">Proyectos</h1>
-        </header>
-
-        <section class="w-full">
-            @foreach($proyectos as $proyecto)
-                <x-organism.project-list-item :proyecto="$proyecto" />
-            @endforeach
-        </section>
-    </main>
-</x-layout>
 </x-layout>
