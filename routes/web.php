@@ -33,14 +33,6 @@ Route::get('/cobertura', function (){
     return view('cobertura');
 });
 
-Route::get('/servicios', function (){
-    return view('servicios');
-});
-
-Route::get('/', function (){
-    return view('inicio');
-});
-
-Route::get('/nosotros', function (){
-    return view('nosotros');
-});
+Route::get('/servicios-proyectos', function (){
+    return view('servicios-proyectos');
+})->name('servicios-proyectos.index');

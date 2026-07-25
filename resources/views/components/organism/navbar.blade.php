@@ -44,7 +44,7 @@
         :class="open ? 'flex' : 'hidden'"
         class="md:flex bg-white dark:bg-slate-900 px-6 py-3 flex-col md:flex-row items-center justify-center border-t border-slate-100 dark:border-slate-800 gap-4 md:gap-8"
     >
-        <x-atoms.nav.link href="{{ asset('servicios') }}" :active="request()->routeIs('servicios')">Servicios</x-atoms.nav.link>
+        <x-atoms.nav.link href="{{ asset('servicios-proyectos') }}" :active="request()->routeIs('servicios-proyectos')">Servicios y Proyectos</x-atoms.nav.link>
         <x-atoms.nav.link href="{{ asset('productos') }}" :active="request()->routeIs('productos')">Productos</x-atoms.nav.link>
         <x-atoms.nav.link href="{{ asset('nosotros') }}" :active="request()->routeIs('nosotros')">Nosotros</x-atoms.nav.link>
         <x-atoms.nav.link href="{{ asset('contacto') }}" :active="request()->routeIs('contacto')">Contacto</x-atoms.nav.link>
