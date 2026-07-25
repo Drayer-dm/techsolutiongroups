@@ -21,7 +21,7 @@ class ServiceProjectController extends Controller
             ['titulo' => 'Diseño y Desarrollo web', 'icono' => '🌐']
         ];
 
-        // 2. Proyectos
+
         $proyectos = [
             [
                 'titulo' => 'Instalación Cámaras en Planta Proceso',
@@ -61,7 +61,7 @@ class ServiceProjectController extends Controller
             ]
         ];
 
-        // 3. Clientes 
+
         $clientes = [
             ['nombre' => 'Banco Estado', 'logo' => '/images/proyectosTechSolutions/clientes/banco-estado.jpg'],
             ['nombre' => 'Entel', 'logo' => '/images/proyectosTechSolutions/clientes/entel-logo.png'],
