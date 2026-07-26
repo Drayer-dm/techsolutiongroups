@@ -2,12 +2,11 @@
     <x-slot:title>Sobre Nosotros - TechSolutions</x-slot:title>
    
 
-    <!-- Encabezado Principal -->
     <div class="max-w-4xl mx-auto py-8">
         <h1 class="text-3xl font-extrabold text-slate-800 tracking-tight">Sobre Nosotros</h1>
         <p class="text-slate-600 mt-2 text-lg">Conoce más sobre TechSolutions y nuestra misión de modernizar la gestión de proyectos tecnológicos.</p>
 
-        <!-- Sección de Misión y Visión -->
+      
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
             <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
                 <h2 class="text-xl font-bold text-slate-700 mb-2">Nuestra Misión</h2>
@@ -23,7 +22,6 @@
             </div>
         </div>
 
-        <!-- Sección de Valores -->
         <div class="mt-10">
             <h2 class="text-2xl font-bold text-slate-800 mb-4">Nuestros Valores</h2>
             <ul class="grid grid-cols-1 sm:grid-cols-3 gap-4">
