@@ -76,11 +76,11 @@ var simplemaps_countrymap_mapdata={
   state_specific: {
     CLAI: {
       name: "Aisén del General Carlos Ibáñez del Campo",
-      color: "#cbd45a"
+      color: "#edfb4a"
     },
     CLAN: {
       name: "Antofagasta",
-      color: "#029300"
+      color: "#029602"
     },
     CLAP: {
       name: "Arica y Parinacota",
