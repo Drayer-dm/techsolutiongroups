@@ -14,6 +14,7 @@
 @endphp
 
 <x-layout>
+    <x-slot:title>Cobertura - TechSolutions</x-slot:title>
     {{-- Carga de scripts locales de Simplemaps --}}
     <script src="{{ asset('js/mapdata.js') }}"></script>
     <script src="{{ asset('js/countrymap.js') }}"></script>
