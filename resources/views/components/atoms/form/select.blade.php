@@ -2,7 +2,7 @@
     'name' => '',
     'id' => null,
     'options' => [],
-    'placeholder' => 'Seleccione una opcion',
+    'placeholder' => 'Seleccione una opción',
     'required' => false,
 ])
 
@@ -20,8 +20,8 @@
         required 
     @endif
     {{ $attributes->merge([
-    'class' => 'w-full rounded-md px-4 py-2 text-sm text-slate-800 bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#10243e]/30 focus:border-[10243e]'
-    . ($hasError ? ' border-red-400' : ' border-slate-300')
+    'class' => 'w-full rounded-md px-4 py-2 text-sm text-slate-800 dark:text-slate-100 bg-white dark:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-[#10243e]/30 focus:border-[10243e]'
+    . ($hasError ? ' border-red-400' : ' border-slate-300 dark:border-slate-600')
     ]) }}>
 
     <option value="" @selected(!$selected)>{{ $placeholder }}</option>

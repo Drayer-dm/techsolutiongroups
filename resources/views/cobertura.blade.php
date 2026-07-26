@@ -20,7 +20,7 @@
 
     <div class="py-8 px-4 max-w-6xl mx-auto space-y-6">
         
-        <!-- Header Claro -->
+
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-200 pb-5">
             <div>
                 <h1 class="text-3xl font-extrabold tracking-tight text-slate-800">
@@ -31,7 +31,6 @@
                 </p>
             </div>
             
-            <!-- Badge UF -->
             <div class="flex items-center gap-3 bg-white border border-slate-200 shadow-sm px-4 py-2 rounded-xl text-sm font-medium">
                 <span class="relative flex h-2.5 w-2.5">
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -44,20 +43,19 @@
             </div>
         </div>
 
-        <!-- Contenedor del Mapa e Información -->
+   
         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
 
-            <!-- Columna Izquierda: El Mapa Ampliado -->
+         
             <div class="md:col-span-5 bg-white border border-slate-200 p-6 rounded-2xl shadow-sm flex flex-col justify-between items-center min-h-[500px]">
                 <h2 class="text-xs font-bold text-indigo-600 uppercase tracking-wider mb-2 w-full text-left border-b border-slate-100 pb-2">
                     Mapa Interactivo de Chile
                 </h2>
 
-                <!-- Div contenedor del mapa ampliado -->
+       
                 <div id="map" class="w-full h-full flex justify-center items-center my-auto min-h-[420px]"></div>
             </div>
 
-            <!-- Columna Derecha: Tarjetas de Información -->
             <div class="md:col-span-7 space-y-4 flex flex-col justify-between">
                 <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm space-y-6 h-full">
                     <div>
@@ -77,7 +75,7 @@
                         </div>
                     </div>
 
-                    <div class="p-4 bg-indigo-50/70 border border-indigo-100 rounded-xl text-sm text-indigo-900">
+                    <div class="p-4 bg-indigo-50/70 border border        <!-- Header Claro -->-indigo-100 rounded-xl text-sm text-indigo-900">
                         <p class="flex items-start gap-2.5">
                             <svg class="w-5 h-5 text-indigo-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             <span>Pasa el cursor por las regiones en el mapa para desplegar su estado de cobertura interactivo.</span>
@@ -85,7 +83,6 @@
                     </div>
                 </div>
 
-                <!-- Leyenda -->
                 <div class="bg-white border border-slate-200 p-4 rounded-xl flex justify-between items-center text-xs font-medium text-slate-600 shadow-sm">
                     <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Cobertura Alta</span>
                     <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Cobertura Media</span>
