@@ -86,3 +86,9 @@
         </p>
     </div>
 </x-layout>
+
+{{-- Vista de inicio pendiente de revisión visual, requisitos:
+- Revisar el hero banner en mobile (altura fija h-[600px] puede no ser adecuada en pantallas pequeñas)
+- La sección "CEO" tiene datos de ejemplo (nombre y foto), reemplazar por información real antes de publicar
+- IMPORTANTE: images/hero-banner.png e images/the_ceo.jpg deben convertirse a .webp para cumplir el estándar de imágenes del sitio
+- Colores institucionales deben tomarse de https://www.techsolution.cl/ --}}

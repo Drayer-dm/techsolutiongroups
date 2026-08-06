@@ -8,3 +8,7 @@
     <path d="M4 10a2 2 0 0 1-2-2V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2z"/>
     <path d="M7 5V3"/>
 </svg>
+
+{{-- Ícono pendiente de revisión visual, requisitos:
+- Mantener el mismo grosor de trazo (stroke-width) que el resto del set de íconos al rediseñar
+- Colores institucionales deben tomarse de https://www.techsolution.cl/ --}}

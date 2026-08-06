@@ -7,3 +7,7 @@
         @endforeach
     </div>
 </x-layout>
+
+{{-- Vista de productos pendiente de revisión visual, requisitos:
+- Revisar grid responsivo (1/2/4 columnas) y espaciados entre cards
+- Colores institucionales deben tomarse de https://www.techsolution.cl/ --}}

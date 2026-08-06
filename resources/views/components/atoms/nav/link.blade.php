@@ -13,3 +13,6 @@
 >
     {{$slot}}
 </a>
+
+{{-- Link de navegación pendiente de revisión visual, requisitos:
+- Revisar el estado activo (border-b-2 border-amber-500) contra los colores institucionales de https://www.techsolution.cl/ --}}

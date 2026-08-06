@@ -26,3 +26,8 @@
 
     </div>
 </article>
+
+{{-- Card de proyecto pendiente de revisión visual, requisitos:
+- La galería usa un grid de 3 columnas fijas, revisar comportamiento en mobile
+- IMPORTANTE: las imágenes de la galería deben estar en formato .webp para cumplir el estándar de imágenes del sitio
+- Colores institucionales deben tomarse de https://www.techsolution.cl/ --}}

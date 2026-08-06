@@ -25,3 +25,8 @@
     </div>
 </body>
 </html>
+
+{{-- Layout base pendiente de revisión, requisitos:
+- Verificar consistencia de espaciados (padding/margin) entre header, main y footer en todas las resoluciones
+- Confirmar que el toggle de modo oscuro se mantenga sincronizado visualmente en todas las páginas
+- Colores institucionales deben tomarse de https://www.techsolution.cl/ --}}

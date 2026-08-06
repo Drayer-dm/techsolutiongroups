@@ -65,3 +65,7 @@
 
     </main>
 </x-layout>
+
+{{-- Vista de Servicios y Proyectos pendiente de revisión visual, requisitos:
+- Esta vista usa un tema oscuro fijo (bg-slate-900 / #0B1120), revisar si debe respetar el toggle de modo claro/oscuro igual que el resto del sitio
+- Colores institucionales deben tomarse de https://www.techsolution.cl/ --}}

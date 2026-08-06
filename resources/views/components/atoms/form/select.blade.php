@@ -34,3 +34,7 @@
 /**$options agarra un array valor = texto.value osea recibe el valor en texto y al momento de enviar el valor envia el name ="asunto"
 el @selected(...) es directiva de blade que agrega el atributo selected osea ya esta seleccionado, aplique que mientras la opcion sea verdadera quede marcada, gracias al old($name) */
 @endphp
+
+{{-- Select de formulario pendiente de revisión visual, requisitos:
+- Hay un typo en el color de foco: focus:border-[10243e] (falta el "#"), revisar antes de aplicar el nuevo diseño
+- Colores institucionales deben tomarse de https://www.techsolution.cl/ --}}

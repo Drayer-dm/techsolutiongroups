@@ -78,3 +78,8 @@
 
     </div>
 </x-layout>
+
+{{-- Vista de FAQ pendiente de rediseño, requisitos:
+- El acordeón actualmente depende de Alpine.js (x-data, x-show, x-collapse), se debe quitar esa dependencia y dejar la interacción resuelta solo con elementos oficiales de trabajo (Tailwindcss o CSS vanilla)
+- Revisar contraste y colores en modo oscuro
+- Colores institucionales deben tomarse de https://www.techsolution.cl/ --}}

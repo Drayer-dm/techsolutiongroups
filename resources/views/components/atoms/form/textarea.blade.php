@@ -24,3 +24,7 @@
             . ($hasError ? 'border-red-400' : 'border-slate-300 dark:border-slate-600')
     ]) }}
 >{{ old($name) }}</textarea>
+
+{{-- Textarea de formulario pendiente de revisión visual, requisitos:
+- Mantener resize-none o evaluar si el nuevo diseño permite resize vertical
+- Colores institucionales deben tomarse de https://www.techsolution.cl/ --}}

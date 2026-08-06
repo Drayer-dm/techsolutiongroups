@@ -6,3 +6,7 @@
     <path d="M2 21v-4"/>
     <path d="M7 9h.01"/>
 </svg>
+
+{{-- Ícono pendiente de revisión visual, requisitos:
+- Mantener el mismo grosor de trazo (stroke-width) que el resto del set de íconos al rediseñar
+- Colores institucionales deben tomarse de https://www.techsolution.cl/ --}}

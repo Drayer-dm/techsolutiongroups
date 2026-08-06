@@ -5,3 +5,7 @@
         {{ $message }}
     </p>
 @enderror
+
+{{-- Mensaje de error de formulario pendiente de revisión visual, requisitos:
+- Revisar contraste del texto de error en modo oscuro
+- Colores institucionales deben tomarse de https://www.techsolution.cl/ --}}

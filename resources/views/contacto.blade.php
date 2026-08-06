@@ -12,3 +12,8 @@
         </div>
     </section>
 </x-layout>
+
+{{-- Vista de contacto pendiente de revisión visual, requisitos:
+- Ocupar solamente componentes de Tailwindcss o CSS vanilla
+- Revisar espaciados y tamaños de texto en mobile vs desktop
+- Colores institucionales deben tomarse de https://www.techsolution.cl/ --}}

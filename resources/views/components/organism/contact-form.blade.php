@@ -87,3 +87,8 @@
         </div>
     </form>
 </div>
+
+{{-- Formulario de contacto pendiente de rediseño, requisitos:
+- Mantener las validaciones y los mensajes de error (#error-*) manejados por JS, solo ajustar los estilos visuales
+- Revisar el diseño responsivo del grid de campos (actualmente 2 columnas en sm, ajustar si el nuevo diseño lo requiere)
+- Colores institucionales deben tomarse de https://www.techsolution.cl/ --}}

@@ -29,3 +29,7 @@
 $errors->has($name): $errors es una variable que Laravel comparte automáticamente en todas las vistas después de una validación fallida. Si el campo tiene error, el borde se pinta rojo.
 old($name, $value): si el usuario ya envió el formulario y falló la validación, recupera lo que había escrito, en vez de dejar el campo vacío.
 -->
+
+{{-- Input de formulario pendiente de revisión visual, requisitos:
+- El color de foco (ring/border) está hardcodeado en hex (#10243e), evaluar moverlo a la config de Tailwind
+- Colores institucionales deben tomarse de https://www.techsolution.cl/ --}}

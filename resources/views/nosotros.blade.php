@@ -32,3 +32,7 @@
         </div>
     </div>
 </x-layout>
+
+{{-- Vista Nosotros pendiente de revisión visual, requisitos:
+- Esta vista no tiene clases dark: como el resto del sitio, revisar si debe soportar modo oscuro para mantener consistencia
+- Colores institucionales deben tomarse de https://www.techsolution.cl/ --}}

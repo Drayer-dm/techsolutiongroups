@@ -16,3 +16,7 @@
     <circle cx="12" cy="12" r="2"/>
     <circle cx="12" cy="12" r="8"/>
 </svg>
+
+{{-- Ícono pendiente de revisión visual, requisitos:
+- Mantener el mismo grosor de trazo (stroke-width) que el resto del set de íconos al rediseñar
+- Colores institucionales deben tomarse de https://www.techsolution.cl/ --}}

@@ -36,3 +36,8 @@
         </div>
     </div>
 </footer>
+
+{{-- Footer pendiente de rediseño, requisitos:
+- Ocupar solamente componentes de Tailwindcss o CSS vanilla, respetando los colores institucionales de https://www.techsolution.cl/
+- IMPORTANTE: el correo y el teléfono del bloque "Contacto" deben quedar clickeables. Agregar <a href="mailto:contacto@techsolution.cl"> al correo y <a href="tel:+56912345678"> al teléfono, para que redirijan a la app de correo o al marcador telefónico según corresponda
+- Revisar que el diseño responda correctamente en mobile (actualmente el grid pasa a 1 columna bajo md) --}}

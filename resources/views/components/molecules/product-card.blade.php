@@ -16,3 +16,8 @@
         </button>
     </div>
 </div>
+
+{{-- Card de producto pendiente de rediseño, requisitos:
+- El botón "Agregar al carrito" es solo visual, aún no tiene lógica asociada
+- IMPORTANTE: las imágenes en images/productos/ deben estar en formato .webp para cumplir el estándar de imágenes del sitio
+- Revisar estados hover/focus y colores institucionales de https://www.techsolution.cl/ --}}

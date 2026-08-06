@@ -95,3 +95,8 @@
 
     </div>
 </x-layout>
+
+{{-- Vista de Cobertura pendiente de revisión visual, requisitos:
+- Revisar el bloque "Cobertura Operacional": la clase Tailwind quedó rota por un comentario HTML insertado a mitad de "border-indigo-100" ("bg-indigo-50/70 border border <!-- Header Claro --> -indigo-100"), hay que limpiar esa clase
+- El mapa interactivo (#map) depende de js/mapdata.js y js/countrymap.js, mantener el contenedor al rediseñar
+- Colores institucionales deben tomarse de https://www.techsolution.cl/ --}}

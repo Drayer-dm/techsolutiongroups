@@ -26,3 +26,6 @@
 
     <x-atoms.form.error :name="$name" />
 </div>
+
+{{-- Campo de textarea (label + textarea + error) pendiente de revisión visual, requisitos:
+- Colores institucionales deben tomarse de https://www.techsolution.cl/ --}}

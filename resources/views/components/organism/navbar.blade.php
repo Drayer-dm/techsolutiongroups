@@ -52,4 +52,10 @@
         <x-atoms.nav.link href="{{ asset('cobertura') }}" :active="request()->routeIs('cobertura')">Cobertura</x-atoms.nav.link>
     </div>
 </nav>
+
+{{-- La navbar debe ser diseniada nuevamente, el disenio queda a eleccion del encargado grafico, solo se piden los
+siguientes requisitos:
+- Ocupar solamente componentes de Tailwindcss o CSS vanilla // Esto aplica a la creacion desde 0 para el menu burguer de
+la version movil
+- Los colores deben ser los institucionales de la pagina original en cuestion: https://www.techsolution.cl/ --}}
  

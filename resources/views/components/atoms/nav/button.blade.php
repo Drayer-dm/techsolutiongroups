@@ -16,3 +16,9 @@
 </a>
 
 <!-- Agregamos el php para crear una variante de los botones-->
+
+{{-- Botón de navegación pendiente de revisión, requisitos:
+- BUG: la variable se llama $atributes en vez de $attributes (línea 12), por lo que el merge de clases nunca se aplica realmente; revisar antes de usar este componente
+- BUG: la clase "txt-sm" no es válida en Tailwind, debería ser "text-sm"
+- Este componente no se usa actualmente en ninguna vista, confirmar si sigue siendo necesario
+- Colores institucionales deben tomarse de https://www.techsolution.cl/ --}}

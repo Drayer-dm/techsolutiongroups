@@ -14,3 +14,7 @@
     {{ $attributes->merge(['class' => 'inline-flex items-center justify-center gap-1.5 px-6 py-2 rounded-md font-semibold transition-colors ' . $styles . ' disabled:opacity-60 disabled:cursor-not-allowed']) }}>
     {{ $slot }}
 </button>
+
+{{-- Botón de formulario pendiente de revisión visual, requisitos:
+- El color primario está hardcodeado en hex (#10243e), evaluar moverlo a la config de Tailwind como color institucional reutilizable
+- Colores institucionales deben tomarse de https://www.techsolution.cl/ --}}
