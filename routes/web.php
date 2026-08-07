@@ -35,3 +35,7 @@ Route::get('/cobertura', function (){
 });
 
 Route::get('/servicios-proyectos', [ServiceProjectController::class, 'index'])->name('servicios-proyectos.index');
+
+Route::get('/ingreso',function(){
+    return view('ingreso');
+});
