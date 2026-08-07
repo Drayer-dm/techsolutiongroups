@@ -22,7 +22,7 @@
                 </p>
             @endif
 
-            {{-- action que apunta al route de login (Drayer uvu --)}}
+            {{-- action que apunta al route de login (Drayer uvu ) --}}
 
             <form method="POST" action="{{ route('login') }}" class="px-4 py-5 space-y-5 sm:px-6 sm:py-6">
                 
@@ -56,7 +56,7 @@
 
             <div class="px-4 pb-6 text-center text-sm text-slate-600 dark:text-slate-400 sm:px-6">
                 No tienes cuenta?
-                <a href="{{ route('register) }}" class="font-semibold text--[#10243e] hover:underline dark-text-slate-200">
+                <a href="{{ route('register') }}" class="font-semibold text--[#10243e] hover:underline dark-text-slate-200">
                     Registrate aqui
                 </a>
             </div>
