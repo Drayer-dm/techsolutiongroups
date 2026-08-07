@@ -39,3 +39,8 @@ Route::get('/servicios-proyectos', [ServiceProjectController::class, 'index'])->
 Route::get('/ingreso',function(){
     return view('ingreso');
 });
+
+#Estas rutas son de prueba ~ despues las comentan o las pueden borrar directamente!!!
+
+Route::view('/login', 'auth.login')->name('login');
+Route::view('/register', 'auth.register')->name('register');
