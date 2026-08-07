@@ -50,6 +50,7 @@
         <x-atoms.nav.link href="{{ asset('contacto') }}" :active="request()->routeIs('contacto')">Contacto</x-atoms.nav.link>
         <x-atoms.nav.link href="{{ asset('faq') }}" :active="request()->routeIs('faq')">FAQ</x-atoms.nav.link>
         <x-atoms.nav.link href="{{ asset('cobertura') }}" :active="request()->routeIs('cobertura')">Cobertura</x-atoms.nav.link>
+        <x-atoms.nav.link href="{{ asset('ingreso') }}" :active="request()->routeIs('ingreso')">Ingreso</x-atoms.nav.link>
     </div>
 </nav>
 
