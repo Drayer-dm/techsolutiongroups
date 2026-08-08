@@ -37,6 +37,18 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
+
+{{-- LOGIN PA LOS PAPUS --}}
+            @auth
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <x-atoms.nav.link href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                        Cerrar Sesion
+                    </x-atoms.nav.link>
+                </form>
+            @else
+                <x-atoms.nav.link href="{{ route('login') }}" :active="request()->routeIs('login')">Ingreso</x-atoms.nav.link>
+            @endauth
         </div>
     </div>
 
@@ -50,7 +62,6 @@
         <x-atoms.nav.link href="{{ asset('contacto') }}" :active="request()->routeIs('contacto')">Contacto</x-atoms.nav.link>
         <x-atoms.nav.link href="{{ asset('faq') }}" :active="request()->routeIs('faq')">FAQ</x-atoms.nav.link>
         <x-atoms.nav.link href="{{ asset('cobertura') }}" :active="request()->routeIs('cobertura')">Cobertura</x-atoms.nav.link>
-        <x-atoms.nav.link href="{{ asset('ingreso') }}" :active="request()->routeIs('ingreso')">Ingreso</x-atoms.nav.link>
     </div>
 </nav>
 

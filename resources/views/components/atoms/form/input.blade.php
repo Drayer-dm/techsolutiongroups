@@ -17,7 +17,7 @@
     name="{{ $name }}"
     id="{{ $inputID }}"
     placeholder="{{ $placeholder }}"
-    value="{{ old($name, $value) }}"
+    value="{{ $type === 'password' ? '' : old($name, $value) }}"
     @if($required)
         required
     @endif

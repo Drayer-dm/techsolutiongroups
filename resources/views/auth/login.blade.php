@@ -1,10 +1,10 @@
 <x-layout>
     <x-slot:title>Iniciar Sesion - TechSolutions</x-slot:title>
 
-    <section class="mx-auto w-full max-w-d px-4 sm:px-6">
+    <section class="mx-auto w-full max-w-md px-4 sm:px-6">
 
         <div class="bg-white dark:bg-slate-900 rounded-lg shadow-sm overflow-hidden">
-                <div class="px-4 py-5 border-b border-slate-100 dark:border-slate-700" sm:px-6>
+                <div class="px-4 py-5 border-b border-slate-100 dark:border-slate-700 sm:px-6">
                     <h1 class="text-lg font-semibold text-slate-900 dark:text-white">Inicia tu sesion</h1>
                     <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Por favor, ingresa tus credenciales para continuar</p>
                 </div>
@@ -29,19 +29,18 @@
                 @csrf
 
                 <x-molecules.form.field
-                    id="email"
-                    name="email"
-                    label="correo"
+                    id="correo"
+                    name="correo"
+                    label="Correo"
                     type="email"
                     placeholder="tu@correo.cl"
                     required
                 />
 
                 <x-molecules.form.field
-                    id="password"
-                    name="password"
+                    id="clave"
+                    name="clave"
                     label="Clave"
-                    type="password"
                     type="password"
                     placeholder="xxxxxxxx"
                     required
@@ -56,7 +55,7 @@
 
             <div class="px-4 pb-6 text-center text-sm text-slate-600 dark:text-slate-400 sm:px-6">
                 No tienes cuenta?
-                <a href="{{ route('register') }}" class="font-semibold text--[#10243e] hover:underline dark-text-slate-200">
+                <a href="{{ route('register') }}" class="font-semibold text-[#10243e] hover:underline dark:text-slate-200">
                     Registrate aqui
                 </a>
             </div>
