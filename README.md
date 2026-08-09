@@ -8,7 +8,7 @@ Proyecto web desarrollado con **Laravel 13**, **Tailwind CSS 4** y **Vite**, usa
 - **Composer**
 - **Node.js** >= 18 y **npm**
 
-> **Nota sobre `sodium`:** el paquete de JWT depende de `lcobucci/jwt`, que necesita la extensión `sodium` de PHP. En muchas instalaciones ya viene activa, pero en algunas (por ejemplo Arch/CachyOS con PHP 8.5) hay que instalarla aparte. Ver la sección [Autenticación JWT](#autenticación-jwt) más abajo.
+> **Nota sobre `sodium`:** el paquete de JWT depende de `lcobucci/jwt`, que necesita la extensión `sodium` de PHP. En muchas instalaciones ya viene activa, pero en algunas (por ejemplo Arch con PHP 8.5) hay que instalarla aparte. Ver la sección [Autenticación JWT](#autenticación-jwt) más abajo.
 
 ---
 
@@ -105,7 +105,7 @@ composer require php-open-source-saver/jwt-auth
 
 ### Habilitar la extensión `sodium` (si Composer la pide)
 
-Si al instalar aparece un error tipo *"lcobucci/jwt requires ext-sodium"*, es porque falta la extensión `sodium` de PHP. En **Arch / CachyOS** viene en un paquete aparte:
+Si al instalar aparece un error tipo *"lcobucci/jwt requires ext-sodium"*, es porque falta la extensión `sodium` de PHP. En **Arch** viene en un paquete aparte:
 
 ```bash
 # 1. Instalar el paquete de la extensión
