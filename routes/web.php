@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceProjectController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\SessionController;
 
 Route::get('/', function () {
     return view('inicio');
@@ -35,3 +37,24 @@ Route::get('/cobertura', function (){
 });
 
 Route::get('/servicios-proyectos', [ServiceProjectController::class, 'index'])->name('servicios-proyectos.index');
+
+//Rutas de autenticacion: solo para visitantes sin sesion iniciada
+Route::middleware('guest')->group(function () {
+
+    Route::get('/registro', [RegisterController::class, 'create'])->name('register');
+    Route::post('/registro', [RegisterController::class, 'store']);
+
+    Route::get('/ingreso', [SessionController::class, 'create'])->name('login');
+    Route::post('/ingreso', [SessionController::class, 'store'])->middleware('throttle:5,1');
+
+
+
+
+    Route::get('/ingreso', function () {
+        return view('auth.login');
+    })->name('login');
+
+});
+    Route::post('/salir', [SessionController::class, 'destroy'])
+    ->middleware('auth')
+    ->name('logout');
