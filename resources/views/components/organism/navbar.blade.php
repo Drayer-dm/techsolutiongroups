@@ -24,7 +24,7 @@
             {{-- Menú de escritorio estilo Píldora --}}
             <div class="hidden lg:flex items-center bg-slate-100/70 dark:bg-[#113f59]/40 px-3 py-1 rounded-full border border-slate-200/60 dark:border-[#113f59] space-x-1">
                 <a href="{{ url('/') }}" class="px-3 py-1.5 rounded-full text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-white hover:bg-[#113f59] dark:hover:bg-orange-500 transition-all">Inicio</a>
-                <a href="{{ asset('registro') }}" class="px-3 py-1.5 rounded-full text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-white hover:bg-[#113f59] dark:hover:bg-orange-500 transition-all">Registro</a>
+                {{-- <a href="{{ asset('registro') }}" class="px-3 py-1.5 rounded-full text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-white hover:bg-[#113f59] dark:hover:bg-orange-500 transition-all">Registro</a>   --}}
                 <a href="{{ asset('servicios-proyectos') }}" class="px-3 py-1.5 rounded-full text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-white hover:bg-[#113f59] dark:hover:bg-orange-500 transition-all">Servicios y Proyectos</a>
                 <a href="{{ asset('productos') }}" class="px-3 py-1.5 rounded-full text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-white hover:bg-[#113f59] dark:hover:bg-orange-500 transition-all">Productos</a>
                 <a href="{{ asset('nosotros') }}" class="px-3 py-1.5 rounded-full text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-white hover:bg-[#113f59] dark:hover:bg-orange-500 transition-all">Nosotros</a>
@@ -47,7 +47,18 @@
                     <svg x-show="dark" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                     </svg>
-                </button>
+                </button> 
+          
+                @auth
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <x-atoms.nav.link href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                            Cerrar Sesion
+                        </x-atoms.nav.link>
+                    </form>
+                @else
+                    <x-atoms.nav.link href="{{ route('login') }}" :active="request()->routeIs('login')">Ingreso</x-atoms.nav.link>
+                @endauth
 
             {{-- btn hamburguesa, solo visible en mobile --}}
             <button @click="open = !open" class="md:hidden p-2 text-slate-600 dark:text-slate-300" aria-label="Abrir menú">

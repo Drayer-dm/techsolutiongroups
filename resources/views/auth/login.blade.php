@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot:title>Iniciar Sesion - TechSolutions</x-slot:title>
 
-    <section class="mx-auto w-full max-w-md px-4 sm:px-6">
+    <section class="mx-auto w-full max-w-md px-4 pt-32 pb-20 sm:px-6">
 
         <div class="bg-white dark:bg-slate-900 rounded-lg shadow-sm overflow-hidden">
                 <div class="px-4 py-5 border-b border-slate-100 dark:border-slate-700 sm:px-6">

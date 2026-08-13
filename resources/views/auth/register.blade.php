@@ -1,10 +1,7 @@
 <x-layout>
-    <div class="pt-32 px-4 max-w-7xl mx-auto">
-    <!-- Todo el contenido de tu vista de servicios y proyectos -->
-</div>
     <x-slot:title>Registro - TechSolutions</x-slot:title>
 
-    <section class="mx-auto w-full max-w-md px-4 sm:px-6">
+    <section class="mx-auto w-full max-w-md px-4 pt-32 pb-20 sm:px-6">
         <div class="bg-white dark:bg-slate-900 rounded-lg shadow-sm overflow-hidden">
             <div class="px-4 py-5 border-b border-slate-100 dark:border-slate-700 sm:px-6">
                 <h1 class="text-lg font-semibold text-slate-900 dark:text-white">Crear cuenta</h1>
