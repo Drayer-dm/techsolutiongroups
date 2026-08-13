@@ -5,8 +5,8 @@
     class="bg-slate-800/40 border border-slate-700/60 rounded-2xl overflow-hidden hover:border-cyan-500/30 transition-colors duration-300 flex flex-col h-full">
     <div class="p-6 md:p-8 flex-grow flex flex-col">
 
-        <h3 class="text-xl text-white font-semibold mb-3">{{ $proyecto['titulo'] }}</h3>
-        <p class="text-sm text-slate-400 leading-relaxed mb-6 flex-grow">
+        <h3 class="text-xl text-[#113f59] dark:text-white font-semibold mb-3">{{ $proyecto['titulo'] }}</h3>
+        <p class="text-sm text-[#113f59] dark:text-white leading-relaxed mb-6 flex-grow">
             {!! $proyecto['descripcion'] !!}
         </p>
         <div class="grid grid-cols-3 gap-3 mt-auto">
