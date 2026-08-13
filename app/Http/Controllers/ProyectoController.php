@@ -42,9 +42,13 @@ class ProyectoController extends Controller
             'nombre'       => ['required', 'string', 'max:100'],
             'fecha_inicio' => ['required', 'date'],
             'estado'       => ['required', Rule::in(array_keys(self::ESTADOS))],
-            'responsable'  => ['required', 'string', 'max:100'],
             'monto'        => ['required', 'integer', 'min:0', 'max:4294967295'],
         ]);
+
+        // El responsable es siempre el dueño de la cuenta: no viene del formulario,
+        // lo pone el servidor igual que created_by. Como usuarios.nombre es de 70
+        // caracteres y proyectos.responsable de 100, siempre cabe.
+        $datos['responsable'] = $request->user()->nombre;
 
         // La relacion pone created_by sola, con el id de la sesion.
         $proyecto = $request->user()->proyectos()->create($datos);

@@ -45,12 +45,12 @@
                         required
                     />
 
-                    <x-molecules.form.field
-                        id="responsable"
-                        name="responsable"
+                    {{-- El responsable no se escribe: lo pone el servidor con el nombre
+                         de tu cuenta, igual que created_by. Esto es solo informativo. --}}
+                    <x-molecules.form.readonly-field
                         label="Responsable"
-                        placeholder="Juan Perez"
-                        required
+                        :valor="auth()->user()->nombre"
+                        ayuda="Se asigna solo con el nombre de tu cuenta."
                     />
 
                     <x-molecules.form.field
