@@ -9,6 +9,9 @@
                 </h4>
                 <ul class="space-y-2.5">
                     <li>
+                        <a href="{{ url('/registro') }}" class="text-slate-400 hover:text-orange-500 transition-colors">Registro</a>
+                    </li>
+                    <li>
                         <a href="{{ url('/') }}" class="text-slate-400 hover:text-orange-500 transition-colors">Inicio</a>
                     </li>
                     <li>

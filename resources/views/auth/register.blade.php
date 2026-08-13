@@ -1,4 +1,7 @@
 <x-layout>
+    <div class="pt-32 px-4 max-w-7xl mx-auto">
+    <!-- Todo el contenido de tu vista de servicios y proyectos -->
+</div>
     <x-slot:title>Registro - TechSolutions</x-slot:title>
 
     <section class="mx-auto w-full max-w-md px-4 sm:px-6">

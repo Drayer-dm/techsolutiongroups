@@ -24,6 +24,7 @@
             {{-- Menú de escritorio estilo Píldora --}}
             <div class="hidden lg:flex items-center bg-slate-100/70 dark:bg-[#113f59]/40 px-3 py-1 rounded-full border border-slate-200/60 dark:border-[#113f59] space-x-1">
                 <a href="{{ url('/') }}" class="px-3 py-1.5 rounded-full text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-white hover:bg-[#113f59] dark:hover:bg-orange-500 transition-all">Inicio</a>
+                <a href="{{ asset('registro') }}" class="px-3 py-1.5 rounded-full text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-white hover:bg-[#113f59] dark:hover:bg-orange-500 transition-all">Registro</a>
                 <a href="{{ asset('servicios-proyectos') }}" class="px-3 py-1.5 rounded-full text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-white hover:bg-[#113f59] dark:hover:bg-orange-500 transition-all">Servicios y Proyectos</a>
                 <a href="{{ asset('productos') }}" class="px-3 py-1.5 rounded-full text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-white hover:bg-[#113f59] dark:hover:bg-orange-500 transition-all">Productos</a>
                 <a href="{{ asset('nosotros') }}" class="px-3 py-1.5 rounded-full text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-white hover:bg-[#113f59] dark:hover:bg-orange-500 transition-all">Nosotros</a>
@@ -73,6 +74,7 @@
             style="display: none;"
         >
             <a href="{{ url('/') }}" class="px-4 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-[#113f59] hover:text-white dark:hover:bg-orange-500 transition-all">Inicio</a>
+            <a href="{{ asset('registro') }}" class="px-4 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-[#113f59] hover:text-white dark:hover:bg-orange-500 transition-all">Registro</a>
             <a href="{{ asset('servicios-proyectos') }}" class="px-4 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-[#113f59] hover:text-white dark:hover:bg-orange-500 transition-all">Servicios y Proyectos</a>
             <a href="{{ asset('productos') }}" class="px-4 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-[#113f59] hover:text-white dark:hover:bg-orange-500 transition-all">Productos</a>
             <a href="{{ asset('nosotros') }}" class="px-4 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-[#113f59] hover:text-white dark:hover:bg-orange-500 transition-all">Nosotros</a>
