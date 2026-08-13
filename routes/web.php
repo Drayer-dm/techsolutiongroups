@@ -55,6 +55,16 @@ Route::middleware('guest')->group(function () {
     })->name('login');
 
 });
+
+//Rutas de cuenta: solo para usuarios con sesion iniciada
+Route::middleware('auth')->group(function () {
+
+    Route::get('/registro-proyecto', function () {
+        return view('registro-proyecto');
+    })->name('registro-proyecto.index');
+
+});
+
     Route::post('/salir', [SessionController::class, 'destroy'])
     ->middleware('auth')
     ->name('logout');
