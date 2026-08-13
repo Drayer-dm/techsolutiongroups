@@ -1,25 +1,30 @@
 @props(['producto'])
 
-{{-- Contenedor adaptable: se ajusta al ancho disponible --}}
-<div class="group relative bg-white dark:bg-[#113f59]/30 border border-slate-200 dark:border-[#113f59] rounded-2xl overflow-hidden shadow-sm transition-all duration-300 hover:shadow-xl h-[360px] w-full">
+@props(['producto'])
+
+{{-- Contenedor adaptable: añadimos tabindex="0", cursor-pointer, outline-none y focus-within --}}
+<div tabindex="0" class="group relative bg-white dark:bg-[#113f59]/30 border border-slate-200 dark:border-[#113f59] rounded-2xl overflow-hidden shadow-sm transition-all duration-300 hover:shadow-xl focus-within:shadow-xl h-[360px] w-full cursor-pointer outline-none">
     
     {{-- CAPA SUPERIOR (Face 1) --}}
-    <div class="absolute inset-0 z-20 bg-white dark:bg-[#0d1b2a] transition-all duration-500 ease-in-out group-hover:-translate-y-28 flex flex-col items-center justify-center p-4 sm:p-6">
+    {{-- Añadimos group-focus-within:-translate-y-28 y group-focus:-translate-y-28 --}}
+    <div class="absolute inset-0 z-20 bg-white dark:bg-[#0d1b2a] transition-all duration-500 ease-in-out group-hover:-translate-y-28 group-focus:-translate-y-28 group-focus-within:-translate-y-28 flex flex-col items-center justify-center p-4 sm:p-6">
+        
         <div class="w-24 h-24 mb-4 bg-orange-100 dark:bg-orange-900/20 rounded-full flex items-center justify-center overflow-hidden border-2 border-orange-500/20">
-            <img src="{{ asset('images/productos/' . $producto['imagen']) }}" alt="{{ $producto['nombre'] }}"
-                class="w-full h-full object-cover">
+            <img src="{{ asset('images/productos/' . $producto['imagen']) }}" alt="{{ $producto['nombre'] }}" class="w-full h-full object-cover">
         </div>
         
         <h3 class="font-bold text-lg sm:text-xl text-[#113f59] dark:text-white text-center">{{ $producto['nombre'] }}</h3>
         <p class="text-orange-500 font-bold text-base sm:text-lg mt-1">${{ number_format($producto['precio'], 0, ',', '.') }}</p>
         
-        <p class="hidden md:block text-[10px] uppercase tracking-widest text-slate-400 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        {{-- Añadimos group-focus:opacity-100 y group-focus-within:opacity-100 --}}
+        <p class="hidden md:block text-[10px] uppercase tracking-widest text-slate-400 mt-4 opacity-0 group-hover:opacity-100 group-focus:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300">
             Ver detalles
         </p>
     </div>
 
     {{-- CAPA INFERIOR (Face 2) --}}
-    <div class="absolute inset-x-0 bottom-0 z-10 h-32 bg-slate-50 dark:bg-[#113f59]/50 p-4 sm:p-6 flex flex-col justify-between translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out border-t border-slate-200 dark:border-[#113f59]">
+    {{-- Añadimos group-focus:translate-y-0 y group-focus-within:translate-y-0 --}}
+    <div class="absolute inset-x-0 bottom-0 z-10 h-32 bg-slate-50 dark:bg-[#113f59]/50 p-4 sm:p-6 flex flex-col justify-between translate-y-full group-hover:translate-y-0 group-focus:translate-y-0 group-focus-within:translate-y-0 transition-transform duration-500 ease-in-out border-t border-slate-200 dark:border-[#113f59]">
         <div>
             <h4 class="font-bold text-sm text-[#113f59] dark:text-white line-clamp-1">{{ $producto['nombre'] }}</h4>
             <p class="text-slate-600 dark:text-slate-300 text-xs mt-1 line-clamp-2">{{ $producto['descripcion'] }}</p>

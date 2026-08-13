@@ -1,4 +1,5 @@
 <x-layout>
+
     <x-slot:title>Sobre Nosotros - TechSolutions</x-slot:title>
 
     <div class="pt-32 pb-20 px-4 max-w-7xl mx-auto">
