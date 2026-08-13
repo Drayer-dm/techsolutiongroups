@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceProjectController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\SessionController;
+use App\Http\Controllers\ProyectoController;
 
 Route::get('/', function () {
     return view('inicio');
@@ -59,12 +60,14 @@ Route::middleware('guest')->group(function () {
 //Rutas de cuenta: solo para usuarios con sesion iniciada
 Route::middleware('auth')->group(function () {
 
-    Route::get('/registro-proyecto', function () {
-        return view('registro-proyecto');
-    })->name('registro-proyecto.index');
+    Route::get('/registro-proyecto', [ProyectoController::class, 'index'])->name('registro-proyecto.index');
 
+    Route::post('/registro-proyecto', [ProyectoController::class, 'store'])->name('registro-proyecto.store');
+
+    // {proyecto} activa el route model binding: Laravel busca el Proyecto por id solo
+    Route::patch('/registro-proyecto/{proyecto}', [ProyectoController::class, 'update'])->name('registro-proyecto.update');
+
+    Route::delete('/registro-proyecto/{proyecto}', [ProyectoController::class, 'destroy'])->name('registro-proyecto.destroy');
+
+    Route::post('/salir', [SessionController::class, 'destroy'])->name('logout');
 });
-
-    Route::post('/salir', [SessionController::class, 'destroy'])
-    ->middleware('auth')
-    ->name('logout');
