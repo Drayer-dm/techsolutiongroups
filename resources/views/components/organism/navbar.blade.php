@@ -50,12 +50,26 @@
                 </button> 
           
                 @auth
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <x-atoms.nav.link href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
-                            Cerrar Sesion
-                        </x-atoms.nav.link>
-                    </form>
+                    <details id="accountMenu" class="group relative">
+                        <summary class="list-none cursor-pointer flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-white hover:bg-[#113f59] dark:hover:bg-orange-500 transition-all">
+                            Mi Cuenta
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </summary>
+
+                        <div class="absolute right-0 mt-2 w-48 rounded-2xl bg-white dark:bg-[#0d1b2a] border border-slate-200/60 dark:border-[#113f59] shadow-xl overflow-hidden z-50">
+                            <a href="{{ route('registro-proyecto.index') }}" class="block px-4 py-2.5 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-[#113f59]/60 transition-colors">
+                                Mis Proyectos
+                            </a>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="w-full text-left px-4 py-2.5 text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-[#113f59]/60 transition-colors">
+                                    Cerrar Sesion
+                                </button>
+                            </form>
+                        </div>
+                    </details>
                 @else
                     <x-atoms.nav.link href="{{ route('login') }}" :active="request()->routeIs('login')">Ingreso</x-atoms.nav.link>
                 @endauth
