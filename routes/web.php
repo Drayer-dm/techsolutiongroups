@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceProjectController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\SessionController;
+use App\Http\Controllers\ProyectoController;
 
 Route::get('/', function () {
     return view('inicio');
@@ -35,3 +38,36 @@ Route::get('/cobertura', function (){
 });
 
 Route::get('/servicios-proyectos', [ServiceProjectController::class, 'index'])->name('servicios-proyectos.index');
+
+//Rutas de autenticacion: solo para visitantes sin sesion iniciada
+Route::middleware('guest')->group(function () {
+
+    Route::get('/registro', [RegisterController::class, 'create'])->name('register');
+    Route::post('/registro', [RegisterController::class, 'store']);
+
+    Route::get('/ingreso', [SessionController::class, 'create'])->name('login');
+    Route::post('/ingreso', [SessionController::class, 'store'])->middleware('throttle:5,1');
+
+
+
+
+    Route::get('/ingreso', function () {
+        return view('auth.login');
+    })->name('login');
+
+});
+
+//Rutas de cuenta: solo para usuarios con sesion iniciada
+Route::middleware('auth')->group(function () {
+
+    Route::get('/registro-proyecto', [ProyectoController::class, 'index'])->name('registro-proyecto.index');
+
+    Route::post('/registro-proyecto', [ProyectoController::class, 'store'])->name('registro-proyecto.store');
+
+    // {proyecto} activa el route model binding: Laravel busca el Proyecto por id solo
+    Route::patch('/registro-proyecto/{proyecto}', [ProyectoController::class, 'update'])->name('registro-proyecto.update');
+
+    Route::delete('/registro-proyecto/{proyecto}', [ProyectoController::class, 'destroy'])->name('registro-proyecto.destroy');
+
+    Route::post('/salir', [SessionController::class, 'destroy'])->name('logout');
+});

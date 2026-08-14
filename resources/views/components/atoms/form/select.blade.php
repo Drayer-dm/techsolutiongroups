@@ -4,13 +4,19 @@
     'options' => [],
     'placeholder' => 'Seleccione una opción',
     'required' => false,
+    'selected' => null,
+    'old' => true,
 ])
 
 
 @php
     $inputID = $id ?? $name;
     $hasError = $errors->has($name);
-    $selected = old($name);
+    // old($name, $selected): si no viene nada de una validacion fallida, usa el valor
+    // que le pase el componente padre. Si tampoco hay, queda null y marca el placeholder.
+    // Con :old="false" el componente ignora old() y respeta siempre su propio valor:
+    // lo necesitan los selects repetidos (uno por tarjeta) que comparten el mismo name.
+    $selected = $old ? old($name, $selected) : $selected;
 @endphp
 
 <select

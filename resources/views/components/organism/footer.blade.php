@@ -1,37 +1,54 @@
-<footer class="bg-slate-900 mt-10">
-    <div class="max-w-7xl mx-auto px-8 py-10">
+<footer class="bg-[#0d1b2a] dark:bg-slate-950 border-t border-[#113f59]/60 text-slate-300 mt-10 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 py-12">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
 
-            {{-- enlaces --}}
+            <!-- Enlaces de importancia -->
             <div>
-                <h4 class="text-white font-semibold mb-3">Links de importancia</h4>
-                <ul class="space-y-2">
+                <h4 class="text-white font-semibold text-base mb-4 tracking-wide">
+                    Links de <span class="text-orange-500">importancia</span>
+                </h4>
+                <ul class="space-y-2.5">
                     <li>
-                        <a href="{{ url('/') }}" class="text-slate-300 hover:text-white">Inicio</a>
+                        <a href="{{ url('/registro') }}" class="text-slate-400 hover:text-orange-500 transition-colors">Registro</a>
                     </li>
                     <li>
-                        <a href="{{ url('/nosotros') }}" class="text-slate-300 hover:text-white">Nosotros</a>
+                        <a href="{{ url('/') }}" class="text-slate-400 hover:text-orange-500 transition-colors">Inicio</a>
                     </li>
                     <li>
-                        <a href="{{ url('/faq') }}" class="text-slate-300 hover:text-white">FAQ</a>
+                        <a href="{{ url('/nosotros') }}" class="text-slate-400 hover:text-orange-500 transition-colors">Nosotros</a>
                     </li>
                     <li>
-                        <a href="{{ url('/contacto') }}" class="text-slate-300 hover:text-white">Contacto</a>
+                        <a href="{{ url('/faq') }}" class="text-slate-400 hover:text-orange-500 transition-colors">FAQ</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/contacto') }}" class="text-slate-400 hover:text-orange-500 transition-colors">Contacto</a>
                     </li>
                 </ul>
             </div>
 
-            {{-- contacto --}}
+            <!-- Contacto Clickeable -->
             <div>
-                <h4 class="text-white font-semibold mb-3">Contacto</h4>
-                <p class="text-slate-300">Correo: contacto@techsolution.cl</p>
-                <p class="text-slate-300">Fono: (+56) (9) 1234 5678</p>
+                <h4 class="text-white font-semibold text-base mb-4 tracking-wide">Contacto</h4>
+                <div class="space-y-2.5 text-slate-400">
+                    <p>
+                        Correo: 
+                        <a href="mailto:contacto@techsolution.cl" class="text-slate-200 hover:text-orange-500 underline transition-colors ml-1">
+                            contacto@techsolution.cl
+                        </a>
+                    </p>
+                    <p>
+                        Fono: 
+                        <a href="tel:+56912345678" class="text-slate-200 hover:text-orange-500 underline transition-colors ml-1">
+                            (+56) (9) 1234 5678
+                        </a>
+                    </p>
+                </div>
             </div>
 
         </div>
 
-        {{-- copyright --}}
-        <div class="border-t border-slate-700 text-slate-400 text-sm text-center pt-4 mt-8">
+        <!-- Copyright -->
+        <div class="border-t border-[#113f59]/60 text-slate-500 text-sm text-center pt-6 mt-10">
             <p>Copyright © {{ date('Y') }} - Todos los derechos reservados - Techsolution.cl</p>
         </div>
     </div>

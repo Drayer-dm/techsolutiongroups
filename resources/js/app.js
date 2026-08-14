@@ -1,4 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Cierra el menú "Mi Cuenta" del navbar al hacer click fuera o presionar Escape
+    const accountMenu = document.getElementById('accountMenu');
+    if (accountMenu) {
+        document.addEventListener('click', (e) => {
+            if (accountMenu.open && !accountMenu.contains(e.target)) {
+                accountMenu.removeAttribute('open');
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && accountMenu.open) {
+                accountMenu.removeAttribute('open');
+            }
+        });
+    }
+
     const form = document.getElementById('atomicContactForm');
     if (form) {
         form.addEventListener('submit', (e) => {

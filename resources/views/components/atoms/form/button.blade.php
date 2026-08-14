@@ -4,9 +4,11 @@
 ])
 
 @php
-    $styles = $variant == 'primary'
-    ? 'bg-[#10243e] text-white hover:bg-[#1a3557]'
-    : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600';
+    $styles = match ($variant) {
+        'primary' => 'bg-[#10243e] text-white hover:bg-[#1a3557]',
+        'danger'  => 'bg-red-600 text-white hover:bg-red-700',
+        default   => 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600',
+    };
 @endphp
 
 <button
