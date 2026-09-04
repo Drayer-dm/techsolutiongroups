@@ -7,9 +7,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Proyecto extends Model
 {
-    /**
-     * Tabla asociada al modelo.
-     */
+    //Estados del proyecto
+    public const ESTADOS = [
+        'pendiente' => 'Pendiente',
+        'en_curso' => 'En curso',
+        'finalizado' => 'Finalizado',
+        'cancelado' => 'Cancelado',
+    ];
+
+
+    //Tabla asociada al modelo.
     protected $table = 'proyectos';
 
     /**

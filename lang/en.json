@@ -1,0 +1,12 @@
+{
+    "Listado de proyectos obtenido correctamente.": "Project list retrieved successfully.",
+    "Proyecto creado correctamente.": "Project created successfully.",
+    "No se pudo crear el proyecto: hay campos inválidos.": "The project could not be created: some fields are invalid.",
+    "Proyecto encontrado.": "Project found.",
+    "Proyecto actualizado correctamente.": "Project updated successfully.",
+    "No se pudo actualizar el proyecto: hay campos inválidos.": "The project could not be updated: some fields are invalid.",
+    "Proyecto \":nombre\" eliminado correctamente.": "Project \":nombre\" deleted successfully.",
+    "No existe un proyecto con el id :id.": "There is no project with id :id.",
+    "La ruta solicitada no existe en esta API.": "The requested route does not exist in this API.",
+    "Endpoint todavía no implementado.": "Endpoint not implemented yet."
+}
