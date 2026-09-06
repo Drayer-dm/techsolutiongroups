@@ -14,9 +14,9 @@ use Illuminate\Validation\Rule;
  *
  *   GET    /api/proyectos        → listar   → 200             · Drayer ✅
  *   POST   /api/proyectos        → crear    → 201 · 422       · Drayer ✅
- *   GET    /api/proyectos/{id}   → ver uno  → 200 · 404       · Pipe ⏳
- *   PUT    /api/proyectos/{id}   → editar   → 200 · 404 · 422 · Pipe ⏳
- *   PATCH  /api/proyectos/{id}   → editar   → 200 · 404 · 422 · Pipe ⏳
+ *   GET    /api/proyectos/{id}   → ver uno  → 200 · 404       · Pipe ✅
+ *   PUT    /api/proyectos/{id}   → editar   → 200 · 404 · 422 · Pipe ✅
+ *   PATCH  /api/proyectos/{id}   → editar   → 200 · 404 · 422 · Pipe ✅
  *   DELETE /api/proyectos/{id}   → eliminar → 200 · 404       · Luisa ⏳
  *
  * ── Estilo de las respuestas ──────────────────────────────────────────────
