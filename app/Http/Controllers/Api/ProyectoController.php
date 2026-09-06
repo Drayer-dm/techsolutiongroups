@@ -170,14 +170,26 @@ class ProyectoController extends Controller
      */
     public function show($id): JsonResponse
     {
+        $proyecto = Proyecto::find($id);
+
+        if ($proyecto === null) {
+            return response()->json([
+                'ok'=> false,
+                'codigo' => 404,
+                'endpoint' => 'GET /api/proyectos/'.$id,
+                'mensaje' => __('No existe un proyecto con el id :id.', ['id' => $id]),
+                'data' => null,
+            ], 404); 
+        }
+
         return response()->json([
-            'ok' => false,
-            'codigo' => 501,
+            'ok' => true,
+            'codigo' => 200,
             'endpoint' => 'GET /api/proyectos/'.$id,
-            'mensaje' => 'Endpoint todavía no implementado.',
-            'data' => null,
-        ], 501);
-    }
+            'mensaje' => __('Proyecto encontrado.'),
+            'data' => $proyecto,
+        ], 200);
+    } //si esto no explota es porque soy barbaro
 
     /**
      * REQUERIMIENTO 4 — Actualizar un proyecto por su ID.    ⏳ LE TOCA A PIPE
@@ -194,13 +206,57 @@ class ProyectoController extends Controller
      */
     public function update(Request $request, $id): JsonResponse
     {
+        $verbo = $request->method();
+
+        $proyecto = Proyecto::find($id);
+
+        if($proyecto === null){
+            return response()->json([
+                'ok' => false,
+                'codigo' => 404,
+                'endpoint' => $verbo.' /api/proyectos/'.$id,
+                'mensaje' => __('No existe un proyecto con el id :id.', ['id' => $id]),
+                'data' => null,
+            ], 404);
+        }
+        
+        $validador = Validator::make($request->all(), [
+            'nombre' => ['sometimes', 'required', 'string', 'min:5', 'max:100'],
+            'fecha_inicio' => ['sometimes', 'required', 'date', 'after_or_equal:2010-01-01'],
+            'estado' => ['sometimes', 'required', Rule::in(array_keys(Proyecto::ESTADOS))],
+            'responsable' => ['sometimes', 'required', 'string', 'max:100'],
+            'monto' => ['sometimes', 'required', 'integer', 'min:0', 'max:4294967295'],
+            'created_by' => ['sometimes', 'required', 'integer', 'exists:usuarios,id'],
+        ]);
+
+        if($validador->fails()) {
+            return response()->json([
+                'ok' => false,
+                'codigo' => 422,
+                'endpoint' => $verbo.' /api/proyectos/'.$id,
+                'mensaje' => __('No se pudo actualizar el proyecto: hay campos inválidos.'),
+                'errores' => $validador->errors(),
+                'data' => null,
+            ], 422);
+        }
+
+        $datos = $validador->validated();
+
+        $proyecto->fill($datos);
+
+        if (array_key_exists('created_by', $datos)) {
+            $proyecto->created_by = $datos['created_by'];
+        }
+
+        $proyecto->save();
+
         return response()->json([
-            'ok' => false,
-            'codigo' => 501,
-            'endpoint' => $request->method().' /api/proyectos/'.$id,
-            'mensaje' => 'Endpoint todavía no implementado.',
-            'data' => null,
-        ], 501);
+            'ok' => true,
+            'codigo' => 200,
+            'endpoint' => $verbo.' /api/proyectos/'.$id,
+            'mensaje' => __('Proyecto actualizado correctamente.'),
+            'data' => $proyecto->refresh(),
+        ], 200);
     }
 
     /**
