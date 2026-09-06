@@ -78,11 +78,26 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'en'),
+    'locale' => env('APP_LOCALE', 'es'),
 
     'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
 
     'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Idiomas soportados
+    |--------------------------------------------------------------------------
+    |
+    | Los idiomas para los que existe una carpeta en lang/. App\Http\Middleware
+    | \SetLocale elige uno de estos por petición, segun ?lang=, la sesion o la
+    | cabecera Accept-Language del navegador.
+    |
+    | El PRIMERO es el preferido cuando el navegador no expresa preferencia.
+    |
+    */
+
+    'supported_locales' => ['es', 'en'],
 
     /*
     |--------------------------------------------------------------------------

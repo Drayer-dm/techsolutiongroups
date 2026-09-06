@@ -28,7 +28,7 @@ class ProyectoController extends Controller
     public function index(Request $request): View
     {
         return view('registro-proyecto', [
-            'estados'   => self::ESTADOS,
+            'estados'   => Proyecto::ESTADOS,
             'proyectos' => $request->user()->proyectos()->latest()->get(),
         ]);
     }
@@ -39,9 +39,9 @@ class ProyectoController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $datos = $request->validate([
-            'nombre'       => ['required', 'string', 'max:100'],
-            'fecha_inicio' => ['required', 'date'],
-            'estado'       => ['required', Rule::in(array_keys(self::ESTADOS))],
+            'nombre'       => ['required', 'string', 'min:5', 'max:100'],
+            'fecha_inicio' => ['required', 'date', 'after_or_equal:2010-01-01'],
+            'estado'       => ['required', Rule::in(array_keys(Proyecto::ESTADOS))],
             'monto'        => ['required', 'integer', 'min:0', 'max:4294967295'],
         ]);
 
@@ -66,14 +66,14 @@ class ProyectoController extends Controller
         abort_unless((int) $proyecto->created_by === (int) $request->user()->id, 403);
 
         $datos = $request->validate([
-            'estado' => ['required', Rule::in(array_keys(self::ESTADOS))],
+            'estado' => ['required', Rule::in(array_keys(Proyecto::ESTADOS))],
         ]);
 
         $proyecto->update($datos);
 
         return redirect()->route('registro-proyecto.index')
             ->with('status', "Estado de \"{$proyecto->nombre}\" actualizado a "
-                . self::ESTADOS[$proyecto->estado] . '.');
+                . Proyecto::ESTADOS[$proyecto->estado] . '.');
     }
 
     /**
