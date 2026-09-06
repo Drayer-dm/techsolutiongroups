@@ -39,6 +39,13 @@ Route::get('/proyectos', [ProyectoController::class, 'index']);
 // REQUERIMIENTO 1 — crear             → 201 · 422
 Route::post('/proyectos', [ProyectoController::class, 'store']);
 
+// REQUERIMIENTO 3 — mostrar uno      → 200 · 404
+Route::get('/proyectos/{proyecto}', [ProyectoController::class, 'show']);
+
+// REQUERIMIENTO 4 — actualizar uno   → 200 · 404 · 422
+Route::put('/proyectos/{proyecto}', [ProyectoController::class, 'update']);
+Route::patch('/proyectos/{proyecto}', [ProyectoController::class, 'update']);
+
 /*
 |--------------------------------------------------------------------------
 | Endpoint JWT de la unidad anterior
