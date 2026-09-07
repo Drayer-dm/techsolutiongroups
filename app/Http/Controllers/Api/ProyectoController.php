@@ -8,6 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use OpenApi\Attributes as OA;
 
 /**
  * API REST del recurso "proyectos" — Evaluación Sumativa Unidad 3.
@@ -46,6 +47,16 @@ use Illuminate\Validation\Rule;
  *   · recibe created_by y responsable en el request, en vez de sacarlos del
  *     usuario logueado (el enunciado pide que TODOS los campos sean requeridos)
  */
+
+// SOBRE CADA METODO DEBEMOS IMPLEMENTAR LOS @OA, ESTE INICIAL ES GLOBAL PARA DAR CUERPO Y DESCRIPCION DE NUESTRO SWAGGER.
+// OJO, CADA NOTACION DE SWAGGER DEBE SER IMPLEMENTADA CON # ANTES DE CADA METODO, 
+// NO DENTRO DE ELLOS, YA QUE SI SE IMPLEMENTA DENTRO, SWAGGER NO LO RECONOCE Y NO LO MUESTRA EN LA DOCUMENTACION.
+
+#[OA\Info(
+    version: "1.0.0",
+    title: "API REST de proyectos",
+    description: "API REST de proyectos para la Evaluación Sumativa Unidad 3"
+)]
 class ProyectoController extends Controller
 {
     /**
@@ -60,6 +71,15 @@ class ProyectoController extends Controller
      * ⚠️ NO uses ->paginate(): envolvería el listado en data/links/meta y
      *    perderíamos el control del formato de la respuesta.
      */
+
+    #[OA\Get(
+        path: "/api/proyectos",
+        summary: "Listar todos los proyectos",
+        tags: ["Proyectos"],
+        responses: [
+            new OA\Response(response: 200, description: "Listado de proyectos obtenido correctamente")
+        ]
+    )]
     public function index(): JsonResponse
     {
         // get() devuelve una Eloquent\Collection. Si la tabla está vacía, la
@@ -89,6 +109,30 @@ class ProyectoController extends Controller
      *    → el 201 va explícito. Si dejáramos response()->json($proyecto) a
      *      secas devolvería 200 y perderíamos puntos en la rúbrica.
      */
+
+    #[OA\Post(
+        path: "/api/proyectos",
+        summary: "Crear un nuevo proyecto",
+        tags: ["Proyectos"],
+        requestBody: new OA\RequestBody(
+            required: true,
+            content: new OA\JsonContent(
+                required: ["nombre", "fecha_inicio", "estado", "responsable", "monto", "created_by"],
+                properties: [
+                    new OA\Property(property: "nombre", type: "string", example: "Cableado sucursal centro"),
+                    new OA\Property(property: "fecha_inicio", type: "string", format: "date", example: "2026-10-01"),
+                    new OA\Property(property: "estado", type: "string", example: "pendiente"),
+                    new OA\Property(property: "responsable", type: "string", example: "Drayer Yoncley"),
+                    new OA\Property(property: "monto", type: "integer", example: 1500000),
+                    new OA\Property(property: "created_by", type: "integer", example: 1),
+                ]
+            )
+        ),
+        responses: [
+            new OA\Response(response: 201, description: "Proyecto creado correctamente"),
+            new OA\Response(response: 422, description: "Campos inválidos"),
+        ]
+    )]
     public function store(Request $request): JsonResponse
     {
         // Validator::make() NO lanza excepción: devuelve un objeto que se
@@ -168,6 +212,19 @@ class ProyectoController extends Controller
      * El bloque del 404 tiene que quedar IDÉNTICO al de update() y destroy():
      * copialo, no lo reescribas de memoria.
      */
+
+    #[OA\Get(
+        path: "/api/proyectos/{id}",
+        summary: "Buscar un proyecto por su ID",
+        tags: ["Proyectos"],
+        parameters: [
+            new OA\Parameter(name: "id", in: "path", required: true, schema: new OA\Schema(type: "integer"))
+        ],
+        responses: [
+            new OA\Response(response: 200, description: "Proyecto encontrado"),
+            new OA\Response(response: 404, description: "No existe un proyecto con ese id"),
+        ]
+    )]
     public function show($id): JsonResponse
     {
         $proyecto = Proyecto::find($id);
@@ -204,6 +261,48 @@ class ProyectoController extends Controller
      * Usá $request->method() para armar el 'endpoint', así la respuesta dice si
      * entró por PUT o por PATCH.
      */
+
+    #[OA\Put(
+        path: "/api/proyectos/{id}",
+        summary: "Actualizar un proyecto (reemplazo completo)",
+        tags: ["Proyectos"],
+        parameters: [
+            new OA\Parameter(name: "id", in: "path", required: true, schema: new OA\Schema(type: "integer"))
+        ],
+        requestBody: new OA\RequestBody(
+            content: new OA\JsonContent(
+                properties: [
+                    new OA\Property(property: "estado", type: "string", example: "en_curso"),
+                    new OA\Property(property: "monto", type: "integer", example: 2000000),
+                ]
+            )
+        ),
+        responses: [
+            new OA\Response(response: 200, description: "Proyecto actualizado correctamente"),
+            new OA\Response(response: 404, description: "No existe un proyecto con ese id"),
+            new OA\Response(response: 422, description: "Campos inválidos"),
+        ]
+    )]
+    #[OA\Patch(
+        path: "/api/proyectos/{id}",
+        summary: "Actualizar un proyecto (parcial)",
+        tags: ["Proyectos"],
+        parameters: [
+            new OA\Parameter(name: "id", in: "path", required: true, schema: new OA\Schema(type: "integer"))
+        ],
+        requestBody: new OA\RequestBody(
+            content: new OA\JsonContent(
+                properties: [
+                    new OA\Property(property: "estado", type: "string", example: "en_curso")
+                ]
+            )
+        ),
+        responses: [
+            new OA\Response(response: 200, description: "Proyecto actualizado correctamente"),
+            new OA\Response(response: 404, description: "No existe un proyecto con ese id"),
+            new OA\Response(response: 422, description: "Campos inválidos"),
+        ]
+    )]
     public function update(Request $request, $id): JsonResponse
     {
         $verbo = $request->method();

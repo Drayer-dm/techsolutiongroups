@@ -1,0 +1,211 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API REST de proyectos",
+        "description": "API REST de proyectos para la Evaluación Sumativa Unidad 3",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/proyectos": {
+            "get": {
+                "tags": [
+                    "Proyectos"
+                ],
+                "summary": "Listar todos los proyectos",
+                "description": "REQUERIMIENTO 2 — Búsqueda de todos los proyectos.\n\n  GET /api/proyectos   → 200\n\n✔ \"La respuesta debe incluir todos los campos\"\n   → devolvemos el modelo entero, sin API Resource que filtre columnas.\n✔ \"El código de respuesta debe ser 200\".\n\n⚠️ NO uses ->paginate(): envolvería el listado en data/links/meta y\n   perderíamos el control del formato de la respuesta.",
+                "operationId": "0b9c4fb02de3d68b86834c5aacf3d4af",
+                "responses": {
+                    "200": {
+                        "description": "Listado de proyectos obtenido correctamente"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Proyectos"
+                ],
+                "summary": "Crear un nuevo proyecto",
+                "description": "REQUERIMIENTO 1 — Agregar un proyecto.\n\n  POST /api/proyectos   → 201 · 422\n\n✔ \"Todos los campos son requeridos y no deben estar vacíos\"\n   → los 6 campos llevan 'required'. En Laravel, 'required' rechaza null,\n     cadena vacía, arreglo vacío y archivo vacío: es exactamente\n     \"requerido y no vacío\".\n✔ \"El código de respuesta debe ser 201\"\n   → el 201 va explícito. Si dejáramos response()->json($proyecto) a\n     secas devolvería 200 y perderíamos puntos en la rúbrica.",
+                "operationId": "db39c7222a428697ee944db43f0e89a7",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre",
+                                    "fecha_inicio",
+                                    "estado",
+                                    "responsable",
+                                    "monto",
+                                    "created_by"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "Cableado sucursal centro"
+                                    },
+                                    "fecha_inicio": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2026-10-01"
+                                    },
+                                    "estado": {
+                                        "type": "string",
+                                        "example": "pendiente"
+                                    },
+                                    "responsable": {
+                                        "type": "string",
+                                        "example": "Drayer Yoncley"
+                                    },
+                                    "monto": {
+                                        "type": "integer",
+                                        "example": 1500000
+                                    },
+                                    "created_by": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Proyecto creado correctamente"
+                    },
+                    "422": {
+                        "description": "Campos inválidos"
+                    }
+                }
+            }
+        },
+        "/api/proyectos/{id}": {
+            "get": {
+                "tags": [
+                    "Proyectos"
+                ],
+                "summary": "Buscar un proyecto por su ID",
+                "description": "REQUERIMIENTO 3 — Búsqueda de un proyecto por su ID.   ⏳ LE TOCA A PIPE\n\n  GET /api/proyectos/{id}   → 200 · 404\n\nPasos: Proyecto::find($id) · if ($proyecto === null) → 404 · si no → 200\ncon el proyecto en 'data'.\n\nEl bloque del 404 tiene que quedar IDÉNTICO al de update() y destroy():\ncopialo, no lo reescribas de memoria.",
+                "operationId": "49c05e118dce27f336aabe5541c1a517",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Proyecto encontrado"
+                    },
+                    "404": {
+                        "description": "No existe un proyecto con ese id"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Proyectos"
+                ],
+                "summary": "Actualizar un proyecto (reemplazo completo)",
+                "description": "REQUERIMIENTO 4 — Actualizar un proyecto por su ID.    ⏳ LE TOCA A PIPE\n\n  PUT   /api/proyectos/{id}   → 200 · 404 · 422\n  PATCH /api/proyectos/{id}   → 200 · 404 · 422\n\nPasos: find() + if 404 · Validator con 'sometimes','required' en los 6\ncampos (eso es lo que permite el PATCH parcial) · fill() · created_by\naparte con array_key_exists() · save() · 200 con $proyecto->refresh().\n\nUsá $request->method() para armar el 'endpoint', así la respuesta dice si\nentró por PUT o por PATCH.",
+                "operationId": "476841e330f38b46afec205365c574d7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "estado": {
+                                        "type": "string",
+                                        "example": "en_curso"
+                                    },
+                                    "monto": {
+                                        "type": "integer",
+                                        "example": 2000000
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Proyecto actualizado correctamente"
+                    },
+                    "404": {
+                        "description": "No existe un proyecto con ese id"
+                    },
+                    "422": {
+                        "description": "Campos inválidos"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Proyectos"
+                ],
+                "summary": "Actualizar un proyecto (parcial)",
+                "operationId": "6d65ce47b877a26159f00641544c2e78",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "estado": {
+                                        "type": "string",
+                                        "example": "en_curso"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Proyecto actualizado correctamente"
+                    },
+                    "404": {
+                        "description": "No existe un proyecto con ese id"
+                    },
+                    "422": {
+                        "description": "Campos inválidos"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Proyectos",
+            "description": "Proyectos"
+        }
+    ]
+}
