@@ -46,7 +46,7 @@ anterior de esta guía, leé esto antes que nada.
 | Persona | Qué le toca | Estado |
 |---|---|---|
 | **Drayer** | Pasos 1 y 2 · esqueleto del controlador · `index()` · `store()` · sus 2 rutas | ✅ **Hecho y probado** |
-| **Pipe** | `show()` · `update()` | ⏳ Pendiente |
+| **Pipe** | `show()` · `update()` | ✅ **Hecho y probado** |
 | **Luisa** | `destroy()` · completar `routes/api.php` · Paso 5 · entrega | ⏳ Pendiente |
 
 El detalle, el orden de merge y los commits sugeridos están en
