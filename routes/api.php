@@ -46,6 +46,8 @@ Route::get('/proyectos/{proyecto}', [ProyectoController::class, 'show']);
 Route::put('/proyectos/{proyecto}', [ProyectoController::class, 'update']);
 Route::patch('/proyectos/{proyecto}', [ProyectoController::class, 'update']);
 
+// REQUERIMIENTO 5 - Eliminar un proyecto -> 200, 404
+Route::delete('/proyectos/{id}', [ProyectoController::class, 'destroy']);
 /*
 |--------------------------------------------------------------------------
 | Endpoint JWT de la unidad anterior

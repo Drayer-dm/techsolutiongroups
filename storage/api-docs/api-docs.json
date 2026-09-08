@@ -157,6 +157,31 @@
                     }
                 }
             },
+            "delete": {
+                "tags": [
+                    "Proyectos"
+                ],
+                "summary": "Eliminar un proyecto por su ID",
+                "operationId": "8a8781a7564909d485a85c08d31b44f3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Proyecto eliminado correctamente"
+                    },
+                    "404": {
+                        "description": "No existe un proyecto con ese id"
+                    }
+                }
+            },
             "patch": {
                 "tags": [
                     "Proyectos"

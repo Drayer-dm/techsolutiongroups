@@ -357,23 +357,48 @@ class ProyectoController extends Controller
             'data' => $proyecto->refresh(),
         ], 200);
     }
-
-    /**
-     * REQUERIMIENTO 5 — Eliminar un proyecto por su ID.     ⏳ LE TOCA A LUISA
+    /*
+     * REQUERIMIENTO 5 — Eliminar un proyecto por su ID.
      *
      *   DELETE /api/proyectos/{id}   → 200 · 404
-     *
-     * Pasos: find() + if 404 · guardar el nombre en una variable · delete() ·
-     * 200 con el mensaje de confirmación y 'data' => null.
      */
+    #[OA\Delete(
+        path: "/api/proyectos/{id}",
+        summary: "Eliminar un proyecto por su ID",
+        tags: ["Proyectos"],
+        parameters: [
+            new OA\Parameter(name: "id", in: "path", required: true, schema: new OA\Schema(type: "integer"))
+        ],
+        responses: [
+            new OA\Response(response: 200, description: "Proyecto eliminado correctamente"),
+            new OA\Response(response: 404, description: "No existe un proyecto con ese id"),
+        ]
+    )]
     public function destroy($id): JsonResponse
     {
+
+    
+        $proyecto = Proyecto::find($id);
+
+        if ($proyecto === null) {
+            return response()->json([
+                'ok' => false,
+                'codigo' => 404,
+                'endpoint' => 'DELETE /api/proyectos/' . $id,
+                'mensaje' => __('No existe un proyecto con el id :id.', ['id' => $id]),
+                'data' => null,
+            ], 404);
+        }
+
+        $nombre = $proyecto->nombre;
+        $proyecto->delete();
+
         return response()->json([
-            'ok' => false,
-            'codigo' => 501,
-            'endpoint' => 'DELETE /api/proyectos/'.$id,
-            'mensaje' => 'Endpoint todavía no implementado.',
+            'ok' => true,
+            'codigo' => 200,
+            'endpoint' => 'DELETE /api/proyectos/' . $id,
+            'mensaje' => __('Proyecto ":nombre" eliminado correctamente.', ['nombre' => $nombre]),
             'data' => null,
-        ], 501);
-    }
-}
+        ], 200);
+    } 
+} 
