@@ -12,15 +12,6 @@ use OpenApi\Attributes as OA;
 
 /**
  * API REST del recurso "proyectos" — Evaluación Sumativa Unidad 3.
- *
- *   GET    /api/proyectos        → listar   → 200             · Drayer ✅
- *   POST   /api/proyectos        → crear    → 201 · 422       · Drayer ✅
- *   GET    /api/proyectos/{id}   → ver uno  → 200 · 404       · Pipe ✅
- *   PUT    /api/proyectos/{id}   → editar   → 200 · 404 · 422 · Pipe ✅
- *   PATCH  /api/proyectos/{id}   → editar   → 200 · 404 · 422 · Pipe ✅
- *   DELETE /api/proyectos/{id}   → eliminar → 200 · 404       · Luisa ⏳
- *
- * ── Estilo de las respuestas ──────────────────────────────────────────────
  * Los 5 métodos devuelven SIEMPRE la misma estructura:
  *
  *   ok        → true / false
@@ -34,7 +25,7 @@ use OpenApi\Attributes as OA;
  * el control del error quede a la vista dentro del controlador. La validación
  * usa Validator::make() por el mismo motivo: el 422 lo armamos nosotros.
  *
- * ⚠️ Los TEXTOS de los errores de validación no se escriben acá: salen de
+ *    Los TEXTOS de los errores de validación no se escriben acá: salen de
  *    lang/es/validation.php y lang/en/validation.php, y App\Http\Middleware\
  *    SetLocale elige el idioma según el navegador. Por eso Validator::make()
  *    va con DOS argumentos: pasarle un array de mensajes como tercero pisaría
@@ -63,13 +54,6 @@ class ProyectoController extends Controller
      * REQUERIMIENTO 2 — Búsqueda de todos los proyectos.
      *
      *   GET /api/proyectos   → 200
-     *
-     * ✔ "La respuesta debe incluir todos los campos"
-     *    → devolvemos el modelo entero, sin API Resource que filtre columnas.
-     * ✔ "El código de respuesta debe ser 200".
-     *
-     * ⚠️ NO uses ->paginate(): envolvería el listado en data/links/meta y
-     *    perderíamos el control del formato de la respuesta.
      */
 
     #[OA\Get(
@@ -100,14 +84,6 @@ class ProyectoController extends Controller
      * REQUERIMIENTO 1 — Agregar un proyecto.
      *
      *   POST /api/proyectos   → 201 · 422
-     *
-     * ✔ "Todos los campos son requeridos y no deben estar vacíos"
-     *    → los 6 campos llevan 'required'. En Laravel, 'required' rechaza null,
-     *      cadena vacía, arreglo vacío y archivo vacío: es exactamente
-     *      "requerido y no vacío".
-     * ✔ "El código de respuesta debe ser 201"
-     *    → el 201 va explícito. Si dejáramos response()->json($proyecto) a
-     *      secas devolvería 200 y perderíamos puntos en la rúbrica.
      */
 
     #[OA\Post(
@@ -202,15 +178,9 @@ class ProyectoController extends Controller
     }
 
     /**
-     * REQUERIMIENTO 3 — Búsqueda de un proyecto por su ID.   ⏳ LE TOCA A PIPE
+     * REQUERIMIENTO 3 — Búsqueda de un proyecto por su ID.
      *
      *   GET /api/proyectos/{id}   → 200 · 404
-     *
-     * Pasos: Proyecto::find($id) · if ($proyecto === null) → 404 · si no → 200
-     * con el proyecto en 'data'.
-     *
-     * El bloque del 404 tiene que quedar IDÉNTICO al de update() y destroy():
-     * copialo, no lo reescribas de memoria.
      */
 
     #[OA\Get(
@@ -249,17 +219,10 @@ class ProyectoController extends Controller
     } //si esto no explota es porque soy barbaro
 
     /**
-     * REQUERIMIENTO 4 — Actualizar un proyecto por su ID.    ⏳ LE TOCA A PIPE
+     * REQUERIMIENTO 4 — Actualizar un proyecto por su ID. 
      *
      *   PUT   /api/proyectos/{id}   → 200 · 404 · 422
      *   PATCH /api/proyectos/{id}   → 200 · 404 · 422
-     *
-     * Pasos: find() + if 404 · Validator con 'sometimes','required' en los 6
-     * campos (eso es lo que permite el PATCH parcial) · fill() · created_by
-     * aparte con array_key_exists() · save() · 200 con $proyecto->refresh().
-     *
-     * Usá $request->method() para armar el 'endpoint', así la respuesta dice si
-     * entró por PUT o por PATCH.
      */
 
     #[OA\Put(
@@ -357,11 +320,13 @@ class ProyectoController extends Controller
             'data' => $proyecto->refresh(),
         ], 200);
     }
+
     /*
      * REQUERIMIENTO 5 — Eliminar un proyecto por su ID.
      *
      *   DELETE /api/proyectos/{id}   → 200 · 404
      */
+
     #[OA\Delete(
         path: "/api/proyectos/{id}",
         summary: "Eliminar un proyecto por su ID",

@@ -1,6 +1,8 @@
 # TechSolutionGroups
 
-Proyecto web desarrollado con **Laravel 13**, **Tailwind CSS 4** y **Vite**, usando **SQLite** como base de datos por defecto. La autenticación de la API funciona con **JWT** (`php-open-source-saver/jwt-auth`).
+Proyecto web desarrollado con **Laravel 13**, **Tailwind CSS 4** y **Vite**, usando **SQLite** como base de datos por defecto. La autenticación de la API funciona con **JWT** (`php-open-source-saver/jwt-auth`) y la API REST está documentada con **Swagger / OpenAPI** (`darkaonline/l5-swagger`).
+
+> 📘 **Probar la API sin instalar nada más:** con el proyecto levantado, la documentación interactiva queda en **http://localhost:8000/api/documentation** — se ven los 5 endpoints y se ejecutan desde el navegador con *Try it out*. Detalle en [Documentación de la API (Swagger)](#documentación-de-la-api-swagger).
 
 ## Requisitos previos
 
@@ -90,6 +92,14 @@ Si en algún momento querés reconstruir la base desde cero (borra todo y vuelve
 ```bash
 php artisan migrate:fresh --seed
 ```
+
+### 8. Generar la documentación Swagger
+
+```bash
+php artisan l5-swagger:generate
+```
+
+> Genera `storage/api-docs/api-docs.json`, que es lo que consume la interfaz de Swagger. El archivo no está versionado, así que **cada integrante tiene que correr este comando en su máquina** después del `composer install`. Detalle completo en [Documentación de la API (Swagger)](#documentación-de-la-api-swagger).
 
 ---
 
@@ -205,6 +215,134 @@ El contraste entre ambas respuestas (401 sin token, 200 con token) confirma que 
 
 ---
 
+## Documentación de la API (Swagger)
+
+La API REST de proyectos está documentada con **OpenAPI** usando `darkaonline/l5-swagger`. La interfaz permite ver todos los endpoints y **ejecutarlos desde el navegador**, sin Postman ni curl.
+
+### 🔗 Acceso directo
+
+Con el servidor levantado (`php artisan serve` o `composer run dev`):
+
+**http://localhost:8000/api/documentation**
+
+Ahí aparecen los **5 endpoints** agrupados bajo el tag **"Proyectos"**, con sus parámetros, cuerpos de ejemplo y códigos de respuesta:
+
+| Método | Ruta | Éxito | Errores |
+|---|---|---|---|
+| `POST` | `/api/proyectos` | 201 | 422 |
+| `GET` | `/api/proyectos` | 200 | — |
+| `GET` | `/api/proyectos/{id}` | 200 | 404 |
+| `PUT` / `PATCH` | `/api/proyectos/{id}` | 200 | 404, 422 |
+| `DELETE` | `/api/proyectos/{id}` | 200 | 404 |
+
+Para probarlos de verdad y no solo mirarlos: **click en el endpoint → "Try it out" → completar los campos → "Execute"**. La respuesta que devuelve es la misma que se obtiene por curl o Postman.
+
+> Estados válidos para el campo `estado`: `pendiente`, `en_curso`, `finalizado`, `cancelado`. Para `created_by` usá un id de usuario que exista (los que carga el seeder).
+
+### Si ya viene en el repo (caso normal)
+
+El paquete **ya está declarado en el `composer.json`**, así que un `composer install` lo trae. Solo hay que generar el JSON y levantar:
+
+```bash
+composer install
+php artisan l5-swagger:generate
+php artisan serve
+```
+
+### Instalarlo desde cero (solo si no estuviera)
+
+```bash
+# 1. Instalar el paquete (arrastra zircote/swagger-php como dependencia)
+composer require darkaonline/l5-swagger
+
+# 2. Publicar la configuración (una sola vez)
+php artisan vendor:publish --provider "L5Swagger\L5SwaggerServiceProvider"
+```
+
+Eso genera dos archivos:
+
+| Archivo | Para qué sirve |
+|---|---|
+| `config/l5-swagger.php` | Título de la doc, ruta de la interfaz (`/api/documentation` por defecto) y qué carpetas escanea buscando anotaciones (`app/` por defecto, que ya cubre el controlador) |
+| `resources/views/vendor/l5-swagger/index.blade.php` | Plantilla de la interfaz. **No hay que tocarla** |
+
+### Cómo están escritas las anotaciones
+
+El proyecto usa **atributos nativos de PHP 8** (`#[OA\...]`), no los docblocks clásicos (`/** @OA\... */`). Los atributos no necesitan la dependencia extra `doctrine/annotations`, y con PHP 8.3 son la forma recomendada por el propio mantenedor de `swagger-php`.
+
+En `app/Http/Controllers/Api/ProyectoController.php`, arriba del archivo:
+
+```php
+use OpenApi\Attributes as OA;
+```
+
+> ⚠️ Tiene que decir **`Attributes`**, no `Annotations`. Con `Annotations` el archivo compila igual, pero `swagger-php` no reconoce nada y falla con `Required @OA\Info() not found`.
+
+Bloque global, justo antes de la declaración de la clase:
+
+```php
+#[OA\Info(
+    version: "1.0.0",
+    title: "API REST de proyectos",
+    description: "API REST de proyectos para la Evaluación Sumativa Unidad 3"
+)]
+class ProyectoController extends Controller
+```
+
+Y cada método lleva su atributo encima de la firma. Por ejemplo, `show()`:
+
+```php
+#[OA\Get(
+    path: "/api/proyectos/{id}",
+    summary: "Buscar un proyecto por su ID",
+    tags: ["Proyectos"],
+    parameters: [
+        new OA\Parameter(name: "id", in: "path", required: true, schema: new OA\Schema(type: "integer"))
+    ],
+    responses: [
+        new OA\Response(response: 200, description: "Proyecto encontrado"),
+        new OA\Response(response: 404, description: "No existe un proyecto con ese id"),
+    ]
+)]
+public function show($id): JsonResponse
+```
+
+> Un docblock normal (`/** */` con notas para humanos) puede convivir con el atributo, siempre que vaya **arriba** de él y nunca en medio.
+
+### Regenerar después de tocar una anotación
+
+Cada vez que se cambia un atributo hay que volver a generar el JSON:
+
+```bash
+php artisan l5-swagger:generate
+```
+
+Señal de éxito: el mensaje `Regenerating docs default` **sin** ningún `ErrorException` debajo.
+
+Mientras se desarrolla, se puede evitar el comando manual agregando esto al `.env` para que se regenere en cada request:
+
+```env
+L5_SWAGGER_GENERATE_ALWAYS=true
+```
+
+### Problemas típicos
+
+| Síntoma | Causa | Solución |
+|---|---|---|
+| `Required @OA\Info() not found` | El `use` dice `OpenApi\Annotations as OA` | Cambiarlo por `OpenApi\Attributes as OA` |
+| Error de sintaxis apuntando al `#[OA\Info(...)]` | Quedó un `;` después del `)]` | Un atributo de PHP cierra en `)]` y ahí termina, sin punto y coma |
+| `l5-swagger:generate` falla pero `php -l` dice que el archivo está bien | Falta cerrar un array (`responses: [...]` o `parameters: [...]`) antes del `)]` final | Revisar los corchetes de los arrays uno por uno |
+| `/api/documentation` da 404 | Nunca se corrió `l5-swagger:generate`, o falta publicar la config | Correr los dos comandos de la sección de instalación |
+| `PHP Warning: Module "mysqli" is already loaded` | El módulo está cargado dos veces en el `php.ini` local | No tiene relación con Swagger, es solo ruido: se puede ignorar |
+
+Lint rápido si algo no compila:
+
+```bash
+php -l app/Http/Controllers/Api/ProyectoController.php
+```
+
+---
+
 ## Levantar el proyecto
 
 ### Opción A — Todo junto (recomendado)
@@ -309,7 +447,13 @@ php artisan key:generate
 php artisan jwt:secret
 touch database/database.sqlite
 php artisan migrate --seed
+php artisan l5-swagger:generate
 composer run dev
 ```
 
 > Si `composer install` falla por `ext-sodium`, instalá la extensión (ver [Autenticación JWT](#autenticación-jwt)) y reintentá.
+
+Con eso levantado:
+
+- **Web:** http://localhost:8000
+- **Documentación de la API (Swagger):** http://localhost:8000/api/documentation
